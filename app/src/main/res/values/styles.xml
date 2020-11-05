@@ -1,0 +1,29 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/SlideAnimationStyle</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+    </style>
+
+    <style name="SlideAnimationStyle" parent="android:Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_rigth</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_rigth</item>
+
+    </style>
+
+    <style name="Splash" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@drawable/easy_closet</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+    </style>
+
+</resources>

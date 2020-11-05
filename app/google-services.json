@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "810327529230",
+    "firebase_url": "https://easy-closet-b428f.firebaseio.com",
+    "project_id": "easy-closet-b428f",
+    "storage_bucket": "easy-closet-b428f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:810327529230:android:1bb04eefe00b8b98a4295f",
+        "android_client_info": {
+          "package_name": "com.eflexsoft.easyclosest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "810327529230-02dspq2qn1l5cbgamch8baphrkubh1ae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDX_DhAu_pk--gkZ0shCHKh1YsD-Cca6uc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "810327529230-02dspq2qn1l5cbgamch8baphrkubh1ae.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
