@@ -74,6 +74,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
                 } else {
                     activityLoginBinding.emailAddress.setError("may be incorrect");
                     activityLoginBinding.password.setError("also may be incorrect");
