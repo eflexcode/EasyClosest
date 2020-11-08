@@ -2,12 +2,13 @@
 
 <layout>
 
-
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
+        android:background="#fff"
         tools:context=".CreateAccountActivity">
 
         <androidx.appcompat.widget.Toolbar
@@ -141,7 +142,7 @@
                 android:layout_marginEnd="30sp"
                 android:layout_marginBottom="15dp"
                 android:background="@drawable/login_btn_background2"
-                android:text="Sign up"
+                android:text="Continue"
                 android:textAllCaps="false"
                 android:textColor="#fff"
                 android:textSize="15sp"
@@ -180,17 +181,17 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="start"
-            android:background="?attr/selectableItemBackground"
-            android:gravity="center"
-            android:text="Clutter is postponed decisions"
-            android:textColor="#000000"
-            android:textSize="15sp"
-            android:textStyle="normal" />
+        <!--        <TextView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:layout_gravity="start"-->
+        <!--            android:background="?attr/selectableItemBackground"-->
+        <!--            android:gravity="center"-->
+        <!--            android:text="Clutter is postponed decisions"-->
+        <!--            android:textColor="#000000"-->
+        <!--            android:textSize="15sp"-->
+        <!--            android:textStyle="normal" />-->
 
     </RelativeLayout>
 </layout>

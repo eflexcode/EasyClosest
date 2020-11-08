@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.eflexsoft.easyclosest.repository.LoginRepository;
+import com.google.firebase.auth.AuthCredential;
 
 public class LoginViewModel extends AndroidViewModel {
 
@@ -27,5 +28,7 @@ public class LoginViewModel extends AndroidViewModel {
 
         return isSignInSuccessful;
     }
-
+    public void doGoogleSignIn(AuthCredential authCredential) {
+        repository.doGoogleSignIn(authCredential);
+    }
 }
