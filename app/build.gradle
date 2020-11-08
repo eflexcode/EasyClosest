@@ -105,4 +105,9 @@ dependencies {
 
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.4.Final'
 
+    implementation 'com.ogaclejapan.smarttablayout:library:2.0.0@aar'
+
+        //Optional: see how to use the utility.
+    implementation 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
+
 }

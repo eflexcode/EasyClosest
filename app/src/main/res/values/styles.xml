@@ -26,4 +26,12 @@
 <!--        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>-->
     </style>
 
+    <style name="NavT" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="NavI" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">11sp</item>
+    </style>
+
 </resources>
