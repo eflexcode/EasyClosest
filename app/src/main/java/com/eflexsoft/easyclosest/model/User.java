@@ -1,5 +1,13 @@
 package com.eflexsoft.easyclosest.model;
 
+import androidx.databinding.BindingAdapter;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.eflexsoft.easyclosest.R;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class User {
 
     private String username;
@@ -57,5 +65,15 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    @BindingAdapter("android:setProPic")
+    public static void setProPic(CircleImageView circleImageView,String url){
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.color.brown);
+        requestOptions.error(R.drawable.no_p);
+
+        Glide.with(circleImageView).load(url).apply(requestOptions).into(circleImageView);
     }
 }
