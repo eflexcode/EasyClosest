@@ -33,7 +33,7 @@
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/pro_pic"
                         android:layout_width="50dp"
-                        android:layout_height="35dp"
+                        android:layout_height="40dp"
                         android:setProPic="@{user.profilePictureUlr}"
                         android:layout_centerVertical="true"
                         android:layout_margin="3dp"/>
@@ -47,7 +47,7 @@
                         android:text="Home"
                         android:layout_marginStart="10dp"
                         android:textColor="#000"
-                        android:textSize="20sp"
+                        android:textSize="22sp"
                         android:textStyle="bold" />
 
                 </RelativeLayout>
@@ -75,5 +75,16 @@
             android:id="@+id/pager"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="30sp"
+            android:src="@drawable/ic_plus_symbol" />
+
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

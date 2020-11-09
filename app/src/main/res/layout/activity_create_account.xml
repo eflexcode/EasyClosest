@@ -11,188 +11,199 @@
         android:background="#fff"
         tools:context=".CreateAccountActivity">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolb"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="#fff">
+            android:layout_height="match_parent">
 
-        </androidx.appcompat.widget.Toolbar>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/toolb"
-            android:layout_centerInParent="true"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="20dp"
-                android:text="Sign up"
-                android:textColor="#000000"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/Names"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:hint="Full Name"
-                android:inputType="textWebEmailAddress"
-                android:textColorHint="#807A7A"
-                android:textSize="14sp"
-                app:met_errorColor="#ff0000"
-                app:met_floatingLabel="highlight"
-                app:met_floatingLabelAnimating="true"
-                app:met_floatingLabelText="Full Name"
-                app:met_floatingLabelTextColor="@color/colorPrimary"
-                app:met_floatingLabelTextSize="12dp"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_textColor="#000000"
-                app:met_textColorHint="#807A7A" />
+                android:layout_height="match_parent">
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:hint="Email Address"
-                android:inputType="textWebEmailAddress"
-                android:textColorHint="#807A7A"
-                android:textSize="14sp"
-                app:met_errorColor="#ff0000"
-                app:met_floatingLabel="highlight"
-                app:met_floatingLabelAnimating="true"
-                app:met_floatingLabelText="Email Address"
-                app:met_floatingLabelTextColor="@color/colorPrimary"
-                app:met_floatingLabelTextSize="12dp"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_textColor="#000000"
-                app:met_textColorHint="#807A7A" />
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolb"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="#fff">
+
+                </androidx.appcompat.widget.Toolbar>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/toolb"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="Sign up"
+                        android:textColor="#000000"
+                        android:textSize="30sp"
+                        android:textStyle="bold" />
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/Names"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:hint="Full Name"
+                        android:inputType="textWebEmailAddress"
+                        android:textColorHint="#807A7A"
+                        android:textSize="14sp"
+                        app:met_errorColor="#ff0000"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelAnimating="true"
+                        app:met_floatingLabelText="Full Name"
+                        app:met_floatingLabelTextColor="@color/colorPrimary"
+                        app:met_floatingLabelTextSize="12dp"
+                        app:met_primaryColor="@color/colorPrimary"
+                        app:met_textColor="#000000"
+                        app:met_textColorHint="#807A7A" />
+
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginEnd="30dp"
+                        android:hint="Email Address"
+                        android:inputType="textWebEmailAddress"
+                        android:textColorHint="#807A7A"
+                        android:textSize="14sp"
+                        app:met_errorColor="#ff0000"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelAnimating="true"
+                        app:met_floatingLabelText="Email Address"
+                        app:met_floatingLabelTextColor="@color/colorPrimary"
+                        app:met_floatingLabelTextSize="12dp"
+                        app:met_primaryColor="@color/colorPrimary"
+                        app:met_textColor="#000000"
+                        app:met_textColorHint="#807A7A" />
 
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/Names"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="30dp"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:textColorHint="#807A7A"
-                android:textSize="14sp"
-                app:met_errorColor="#ff0000"
-                app:met_floatingLabel="highlight"
-                app:met_floatingLabelAnimating="true"
-                app:met_floatingLabelText="Password"
-                app:met_floatingLabelTextColor="@color/colorPrimary"
-                app:met_floatingLabelTextSize="12dp"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_textColor="#000000"
-                app:met_textColorHint="#807A7A" />
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Names"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="30dp"
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:textColorHint="#807A7A"
+                        android:textSize="14sp"
+                        app:met_errorColor="#ff0000"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelAnimating="true"
+                        app:met_floatingLabelText="Password"
+                        app:met_floatingLabelTextColor="@color/colorPrimary"
+                        app:met_floatingLabelTextSize="12dp"
+                        app:met_primaryColor="@color/colorPrimary"
+                        app:met_textColor="#000000"
+                        app:met_textColorHint="#807A7A" />
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/password_confirm"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/Names"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="30dp"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:textColorHint="#807A7A"
-                android:textSize="14sp"
-                app:met_errorColor="#ff0000"
-                app:met_floatingLabel="highlight"
-                app:met_floatingLabelAnimating="true"
-                app:met_floatingLabelText="Confirm Password"
-                app:met_floatingLabelTextColor="@color/colorPrimary"
-                app:met_floatingLabelTextSize="12dp"
-                app:met_primaryColor="@color/colorPrimary"
-                app:met_textColor="#000000"
-                app:met_textColorHint="#807A7A" />
+                    <com.rengwuxian.materialedittext.MaterialEditText
+                        android:id="@+id/password_confirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/Names"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="30dp"
+                        android:hint="Confirm Password"
+                        android:inputType="textPassword"
+                        android:textColorHint="#807A7A"
+                        android:textSize="14sp"
+                        app:met_errorColor="#ff0000"
+                        app:met_floatingLabel="highlight"
+                        app:met_floatingLabelAnimating="true"
+                        app:met_floatingLabelText="Confirm Password"
+                        app:met_floatingLabelTextColor="@color/colorPrimary"
+                        app:met_floatingLabelTextSize="12dp"
+                        app:met_primaryColor="@color/colorPrimary"
+                        app:met_textColor="#000000"
+                        app:met_textColorHint="#807A7A" />
 
-            <CheckBox
-                android:id="@+id/show_p"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="30dp"
-                android:text="Show passwords" />
+                    <CheckBox
+                        android:id="@+id/show_p"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="30dp"
+                        android:text="Show passwords" />
 
-            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
-                android:id="@+id/login_continue"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="30sp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/login_btn_background2"
-                android:text="Continue"
-                android:textAllCaps="false"
-                android:textColor="#fff"
-                android:textSize="15sp"
-                android:textStyle="normal"
-                app:finalCornerAngle="30dp"
-                app:initialCornerAngle="30dp"
-                app:spinning_bar_color="#FFF"
-                app:spinning_bar_padding="2dp"
-                app:spinning_bar_width="4dp"/>
+                    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                        android:id="@+id/login_continue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="30sp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/login_btn_background2"
+                        android:text="Continue"
+                        android:textAllCaps="false"
+                        android:textColor="#fff"
+                        android:textSize="15sp"
+                        android:textStyle="normal"
+                        app:finalCornerAngle="30dp"
+                        app:initialCornerAngle="30dp"
+                        app:spinning_bar_color="#FFF"
+                        app:spinning_bar_padding="2dp"
+                        app:spinning_bar_width="4dp" />
 
-            <TextView
-                android:id="@+id/grating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/logo"
-                android:layout_gravity="center"
-                android:layout_marginTop="5dp"
-                android:text="OR"
-                android:textColor="#000000"
-                android:textSize="15sp" />
+                    <TextView
+                        android:id="@+id/grating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/logo"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="OR"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="15dp"
-                android:id="@+id/google_sign_in"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/login_btn_background"
-                android:drawableLeft="@drawable/ic_google"
-                android:padding="10dp"
-                android:text="Sign up with Google"
-                android:textAllCaps="false"
-                android:textSize="15sp"
-                android:textStyle="normal" />
+                    <Button
+                        android:id="@+id/google_sign_in"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/login_btn_background"
+                        android:drawableLeft="@drawable/ic_google"
+                        android:padding="10dp"
+                        android:text="Sign up with Google"
+                        android:textAllCaps="false"
+                        android:textSize="15sp"
+                        android:textStyle="normal" />
 
-        </LinearLayout>
+                </LinearLayout>
 
-        <!--        <TextView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="50dp"-->
-        <!--            android:layout_alignParentBottom="true"-->
-        <!--            android:layout_gravity="start"-->
-        <!--            android:background="?attr/selectableItemBackground"-->
-        <!--            android:gravity="center"-->
-        <!--            android:text="Clutter is postponed decisions"-->
-        <!--            android:textColor="#000000"-->
-        <!--            android:textSize="15sp"-->
-        <!--            android:textStyle="normal" />-->
+                <!--        <TextView-->
+                <!--            android:layout_width="match_parent"-->
+                <!--            android:layout_height="50dp"-->
+                <!--            android:layout_alignParentBottom="true"-->
+                <!--            android:layout_gravity="start"-->
+                <!--            android:background="?attr/selectableItemBackground"-->
+                <!--            android:gravity="center"-->
+                <!--            android:text="Clutter is postponed decisions"-->
+                <!--            android:textColor="#000000"-->
+                <!--            android:textSize="15sp"-->
+                <!--            android:textStyle="normal" />-->
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
 
     </RelativeLayout>
 </layout>

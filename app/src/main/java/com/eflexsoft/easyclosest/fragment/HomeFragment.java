@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment {
         View view = binding.getRoot();
 
         List<String> strings = new ArrayList<>();
-        strings.add("All Cloths");
+        strings.add("My Closet");
         strings.add("Daily Outfit");
 
         List<Fragment> fragments = new ArrayList<>();
