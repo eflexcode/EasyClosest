@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-   <item android:id="@+id/home"
-       android:icon="@drawable/home_is_selected"
-       android:title="Home" />
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/home_is_selected"
+        android:title="Home"/>
 
-   <item android:id="@+id/favourite"
-       android:icon="@drawable/favurite_is_selected"
-       android:title="Favourite" />
+    <item
+        android:id="@+id/favourite"
+        android:icon="@drawable/favurite_is_selected"
+        android:title="Favourite" />
 
-   <item android:id="@+id/events"
-       android:icon="@drawable/event_is_selected"
-       android:title="Event" />
+    <item
+        android:id="@+id/p"
+        android:title=""
+        android:enabled="false" />
 
-   <item android:id="@+id/profile"
-       android:icon="@drawable/profile_is_selected"
-       android:title="Profile" />
+    <item
+        android:id="@+id/events"
+        android:icon="@drawable/event_is_selected"
+        android:title="Event" />
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/profile_is_selected"
+        android:title="Profile" />
 
 </menu>

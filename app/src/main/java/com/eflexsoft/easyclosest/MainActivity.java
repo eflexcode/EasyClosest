@@ -60,5 +60,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        activityMainBinding.nav.setBackground(null);
+
     }
 }
