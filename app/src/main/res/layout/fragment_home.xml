@@ -2,6 +2,7 @@
 <layout>
 
     <data>
+
         <variable
             name="user"
             type="com.eflexsoft.easyclosest.model.User" />
@@ -34,18 +35,18 @@
                         android:id="@+id/pro_pic"
                         android:layout_width="50dp"
                         android:layout_height="40dp"
-                        android:setProPic="@{user.profilePictureUlr}"
                         android:layout_centerVertical="true"
-                        android:layout_margin="3dp"/>
+                        android:layout_margin="3dp"
+                        android:setProPic="@{user.profilePictureUlr}" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/pro_pic"
                         android:gravity="center"
                         android:text="Home"
-                        android:layout_marginStart="10dp"
                         android:textColor="#000"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -66,24 +67,25 @@
                 app:tabIndicatorFullWidth="false"
                 app:tabPaddingBottom="5dp"
                 app:tabSelectedTextColor="@color/colorPrimary"
-                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-                app:tabTextColor="#AEABAB" />
+                app:tabTextAppearance="@style/tatTextStyle"
+                app:tabTextColor="#706E6E" />
+
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager.widget.ViewPager
-            android:layout_width="match_parent"
             android:id="@+id/pager"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
-<!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--            android:id="@+id/fab"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="end|bottom"-->
-<!--            android:layout_margin="30sp"-->
-<!--            android:src="@drawable/ic_plus_symbol" />-->
+        <!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+        <!--            android:id="@+id/fab"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="end|bottom"-->
+        <!--            android:layout_margin="30sp"-->
+        <!--            android:src="@drawable/ic_plus_symbol" />-->
 
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
