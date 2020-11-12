@@ -1,34 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CustomB"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <View
-        android:layout_width="100dp"
-        android:layout_height="10dp"
         android:id="@+id/v"
-        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="5dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/tab_indicator_style"/>
+        android:layout_marginTop="10dp"
+        android:background="@drawable/tab_indicator_style" />
+
+    <TextView
+        android:id="@+id/t"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/v"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Add to"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:textStyle="normal" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/v"
-        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/t"
+        android:layout_marginTop="20dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_wardrobe" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#373636"
-                android:textSize="20sp"
-                android:text="Add to closet"/>
+                android:layout_gravity="center"
+                android:text="My closet"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="33dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_clothes" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Daily outfit"
+                android:textColor="#000"
+                android:textSize="15sp"
+                android:textStyle="normal" />
 
         </LinearLayout>
 

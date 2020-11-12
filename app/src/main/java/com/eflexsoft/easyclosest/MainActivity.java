@@ -7,12 +7,14 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.eflexsoft.easyclosest.databinding.ActivityMainBinding;
 import com.eflexsoft.easyclosest.fragment.EventFragment;
 import com.eflexsoft.easyclosest.fragment.FavouriteFragment;
 import com.eflexsoft.easyclosest.fragment.HomeFragment;
 import com.eflexsoft.easyclosest.fragment.ProfileFragment;
+import com.eflexsoft.easyclosest.fragment.UploadBottomSheetFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_main);
         ActivityMainBinding activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        if (savedInstanceState == null){
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.main_frame, new HomeFragment()).commit();
         }
 
@@ -61,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         activityMainBinding.nav.setBackground(null);
+
+        activityMainBinding.fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UploadBottomSheetFragment bottomSheetFragment = new UploadBottomSheetFragment();
+                bottomSheetFragment.show(getSupportFragmentManager(), "doUpload");
+            }
+        });
 
     }
 }

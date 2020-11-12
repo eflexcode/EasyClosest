@@ -38,8 +38,8 @@ public class HomeFragment extends Fragment {
         View view = binding.getRoot();
 
         List<String> strings = new ArrayList<>();
-        strings.add("My Closet");
-        strings.add("Daily Outfit");
+        strings.add("My closet");
+        strings.add("Daily cutfit");
 
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new AllClothsFragment());

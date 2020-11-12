@@ -31,8 +31,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
-<!--        <item name="android:windowBackground">@drawable/easy_closet</item>-->
-<!--        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>-->
+        <!--        <item name="android:windowBackground">@drawable/easy_closet</item>-->
+        <!--        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>-->
     </style>
 
     <style name="NavT" parent="TextAppearance.AppCompat.Caption">
@@ -48,5 +48,30 @@
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">15sp</item>
     </style>
+    
+    <style name="CustomBS" parent="@style/Theme.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomB</item>
+    </style>
+    
+    <style name="CustomB" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/bottomSheet</item>
+    </style>
 
+    <style name="bottomSheet">
+        <!--        <item name="background">@drawable/botom_sheet_background</item>-->
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/bottomSheet2</item>
+    </style>
+
+
+    <style name="bottomSheet2" parent="Widget.Design.BottomSheet.Modal">
+            <item name="android:background">@drawable/botom_sheet_background</item>
+    </style>
 </resources>
