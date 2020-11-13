@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
 
         List<String> strings = new ArrayList<>();
         strings.add("My closet");
-        strings.add("Daily cutfit");
+        strings.add("Daily outfit");
 
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new AllClothsFragment());

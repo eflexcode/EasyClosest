@@ -31,7 +31,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <!--        <item name="android:windowBackground">@drawable/easy_closet</item>-->
+                <item name="android:windowBackground">@drawable/splash_back</item>
         <!--        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>-->
     </style>
 
