@@ -2,4 +2,32 @@
     <string name="app_name">Easy closet</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="spinner_array">
+        <item>Categories</item>
+        <item>Shirts</item>
+        <item>Trousers</item>
+        <item>Harts</item>
+        <item>Caps</item>
+        <item>Head warmer</item>
+        <item>Belts</item>
+        <item>Coats</item>
+        <item>Sweaters</item>
+        <item>Glasses</item>
+        <item>Jewries</item>
+        <item>Accessories</item>
+        <item>Shoes</item>
+        <item>Underwear</item>
+    </string-array>
+
+    <string-array name="weather">
+        <item>Seasons</item>
+        <item>Raining</item>
+        <item>Dry</item>
+        <item>Short Dry</item>
+        <item>Harmattan</item>
+        <item>Fall/Autumn</item>
+        <item>Spring</item>
+        <item>Summer</item>
+        <item>Winter</item>
+    </string-array>
 </resources>

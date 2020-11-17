@@ -1,41 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#fff"
-    tools:context=".AddToClosetActivity">
+<layout>
 
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolb"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        app:titleTextColor="#000"
-        app:title="My closet"
-        android:background="#fff"/>
+        android:layout_height="match_parent"
+        android:background="#fff"
+        tools:context=".AddToClosetActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_below="@id/toolb"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolb"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#fff"
+            android:elevation="8dp"
+            app:title="My closet"
+            app:titleTextColor="#000" />
 
-        android:layout_height="300dp">
-
-        <ImageView
+        <RelativeLayout
+            android:id="@+id/img_re"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:layout_margin="10dp"/>
+            android:layout_below="@id/toolb">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_centerInParent="true"
-            android:layout_margin="10dp"
-            android:src="@drawable/ic_image_gallery"/>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="10dp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_image_gallery" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/spin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_re"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/spinner_background">
+
+            <Spinner
+                android:id="@+id/category_spinner"
+                android:layout_width="200dp"
+                android:layout_height="50dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spin"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/spinner_background">
+
+            <Spinner
+                android:id="@+id/weather_spinner"
+                android:layout_width="200dp"
+                android:layout_height="50dp" />
+        </RelativeLayout>
 
     </RelativeLayout>
-
-
-
-</RelativeLayout>
+</layout>

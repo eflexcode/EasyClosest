@@ -37,17 +37,17 @@ public class UploadBottomSheetFragment extends BottomSheetDialogFragment {
         binding.addCloset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                startActivity(new Intent(getContext(), AddToClosetActivity.class));
                 dismiss();
+                startActivity(new Intent(getContext(), AddToClosetActivity.class));
             }
         });
 
         binding.addDaily.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), AddToDailyOutfitActivity.class));
                 dismiss();
+                startActivity(new Intent(getContext(), AddToDailyOutfitActivity.class));
+
             }
         });
 
