@@ -114,4 +114,6 @@ dependencies {
     //Optional: see how to use the utility.
     implementation 'com.ogaclejapan.smarttablayout:utils-v4:2.0.0@aar'
 
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+
 }

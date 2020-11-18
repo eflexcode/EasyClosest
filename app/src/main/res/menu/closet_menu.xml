@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/home"
-        android:icon="@drawable/ic_crop_1_"
+        android:id="@+id/crop"
+        android:icon="@drawable/ic_file"
         app:showAsAction="ifRoom"
         android:title="Crop image"/>
 
     <item
-        android:id="@+id/favourite"
-        android:icon="@drawable/ic_photo"
+        android:id="@+id/pick_image"
+        android:icon="@drawable/ic_add_1_"
         app:showAsAction="ifRoom"
         android:title="Add image" />
 
