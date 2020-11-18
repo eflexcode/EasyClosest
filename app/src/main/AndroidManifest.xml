@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CropActivity"></activity>
+        <activity android:name=".CropActivity" android:theme="@style/ForCropActivity"/>
         <activity android:name=".AddToDailyOutfitActivity" />
         <activity
             android:name=".AddToClosetActivity"

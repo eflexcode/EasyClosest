@@ -2,11 +2,13 @@ package com.eflexsoft.easyclosest;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Camera;
@@ -75,7 +77,6 @@ public class AddToClosetActivity extends AppCompatActivity implements AdapterVie
 
                 if (aBoolean) {
                     pickImageCamera();
-//                    Toast.makeText(AddToClosetActivity.this, "rrrrrrrrrrt", Toast.LENGTH_SHORT).show();
                 } else {
                     pickImageFile();
                 }
@@ -109,6 +110,8 @@ public class AddToClosetActivity extends AppCompatActivity implements AdapterVie
         switch (item.getItemId()) {
 
             case R.id.crop:
+                doImageCrop();
+
                 break;
             case R.id.pick_image:
 
@@ -121,6 +124,41 @@ public class AddToClosetActivity extends AppCompatActivity implements AdapterVie
 
         return super.onOptionsItemSelected(item);
 
+
+    }
+
+    void doImageCrop() {
+
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(this)
+                .setTitle("Crop image")
+                .setMessage("you need to pick an image first before trying to crop it")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog dialog = alertDialog.create();
+        if (uri == null && bitmap == null) {
+            dialog.show();
+            return;
+        }
+
+        if (uri == null) {
+            //send bitmap
+
+            Intent intent = new Intent(this, CropActivity.class);
+            intent.putExtra("bitmap", bitmap);
+            startActivityForResult(intent, 4);
+
+        } else {
+
+            //send uri
+            Intent intent = new Intent(this, CropActivity.class);
+            intent.putExtra("uri", uri);
+            startActivityForResult(intent, 4);
+        }
 
     }
 
@@ -142,15 +180,17 @@ public class AddToClosetActivity extends AppCompatActivity implements AdapterVie
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == imageFileRequestCode && resultCode == RESULT_OK) {
+        if (requestCode == imageFileRequestCode && resultCode == RESULT_OK && data.getData() != null) {
 
             uri = data.getData();
             binding.imagePH.setVisibility(View.GONE);
             binding.maindImage.setImageURI(uri);
 
+            bitmap = null;
+
         }
 
-        if (requestCode == imageCamera && resultCode == RESULT_OK) {
+        if (requestCode == imageCamera && resultCode == RESULT_OK && data.getExtras() != null) {
 
             Bundle bundle = data.getExtras();
 
@@ -162,6 +202,8 @@ public class AddToClosetActivity extends AppCompatActivity implements AdapterVie
 
             binding.imagePH.setVisibility(View.GONE);
             binding.maindImage.setImageBitmap(bitmap);
+
+            uri = null;
 
         }
 

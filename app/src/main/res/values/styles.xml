@@ -18,6 +18,15 @@
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
     </style>
 
+
+    <style name="ForCropActivity" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">#000000</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/SlideAnimationStyle</item>
+    </style>
+
     <style name="SlideAnimationStyle" parent="android:Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/slide_in_rigth</item>
         <item name="android:activityOpenExitAnimation">@anim/slide_out_left</item>

@@ -6,6 +6,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:background="#000"
         android:layout_height="match_parent"
         tools:context=".CropActivity">
 
@@ -13,8 +14,30 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/cropImageView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_above="@id/done"
+            android:layout_height="match_parent"/>
+
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+            android:id="@+id/done"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="30sp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/login_btn_background2"
+            android:text="Done"
+            android:layout_alignParentBottom="true"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            app:finalCornerAngle="30dp"
+            app:initialCornerAngle="30dp"
+            app:spinning_bar_color="#FFF"
+            app:spinning_bar_padding="2dp"
+            app:spinning_bar_width="4dp" />
 
     </RelativeLayout>
 </layout>
