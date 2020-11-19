@@ -22,11 +22,14 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@id/login_continue"
             android:layout_below="@id/toolb">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
 
                 <RelativeLayout
                     android:id="@+id/img_re"
@@ -67,7 +70,7 @@
 
                     <Spinner
                         android:id="@+id/category_spinner"
-                        android:layout_width="160dp"
+                        android:layout_width="170dp"
                         android:layout_height="50dp" />
 
                 </RelativeLayout>
@@ -83,7 +86,7 @@
 
                     <Spinner
                         android:id="@+id/weather_spinner"
-                        android:layout_width="160dp"
+                        android:layout_width="170dp"
                         android:layout_height="50dp" />
                 </RelativeLayout>
 
@@ -95,6 +98,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="30dp"
                     android:background="@drawable/spinner_background"
                     android:hint="Note (optional)"
                     android:maxLines="5"
@@ -102,29 +106,37 @@
                     android:textColor="#000"
                     android:textSize="15sp" />
 
-                <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
-                    android:id="@+id/login_continue"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/note"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="30sp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/login_btn_background2"
-                    android:text="Continue to closet"
-                    android:textAllCaps="false"
-                    android:textColor="#fff"
-                    android:textSize="15sp"
-                    android:textStyle="normal"
-                    app:finalCornerAngle="30dp"
-                    app:initialCornerAngle="30dp"
-                    app:spinning_bar_color="#FFF"
-                    app:spinning_bar_padding="2dp"
-                    app:spinning_bar_width="4dp" />
 
             </RelativeLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/login_continue"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="1dp"
+            android:backgroundTint="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/continue_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Continue to closet"
+                android:textColor="#fff"
+                android:textSize="17sp" />
+
+            <ProgressBar
+                android:id="@+id/pro_B"
+                android:layout_width="20dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/colorPrimaryDark"
+                android:visibility="gone" />
+
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 </layout>

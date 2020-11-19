@@ -29,11 +29,12 @@ import android.widget.Toast;
 
 import com.eflexsoft.easyclosest.databinding.ActivityAddToClosetBinding;
 import com.eflexsoft.easyclosest.fragment.PickImageBottomSheetFragment;
+import com.eflexsoft.easyclosest.viewmodel.AddToClosetViewModel;
 import com.eflexsoft.easyclosest.viewmodel.PickImageViewModel;
 
 import java.io.ByteArrayOutputStream;
 
-public class AddToClosetActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class AddToClosetActivity extends AppCompatActivity {
 
     PickImageViewModel viewModel;
     int imageFileRequestCode = 7;
@@ -43,6 +44,11 @@ public class AddToClosetActivity extends AppCompatActivity implements AdapterVie
     Bitmap bitmap;
     Bitmap donBitmap;
     boolean isImageCropped;
+
+    String category;
+    String season;
+
+    AddToClosetViewModel closetViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +68,33 @@ public class AddToClosetActivity extends AppCompatActivity implements AdapterVie
         arrayAdapterSeason.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         binding.categorySpinner.setAdapter(arrayAdapter);
-        binding.categorySpinner.setOnItemSelectedListener(this);
+        binding.categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                category = arrayAdapter.getItem(position).toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         binding.weatherSpinner.setAdapter(arrayAdapterSeason);
-        binding.weatherSpinner.setOnItemSelectedListener(this);
+        binding.weatherSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                season = arrayAdapterSeason.getItem(position).toString();
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
         binding.toolb.setNavigationIcon(R.drawable.ic_left_arrow2);
         binding.toolb.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +103,7 @@ public class AddToClosetActivity extends AppCompatActivity implements AdapterVie
 //                overridePendingTransition(R.anim.slide_in_rigth,R.anim.slide_out_left);
             }
         });
+
 
         viewModel = new ViewModelProvider(this).get(PickImageViewModel.class);
         viewModel.getIsCamera().observe(this, new Observer<Boolean>() {
@@ -107,15 +137,86 @@ public class AddToClosetActivity extends AppCompatActivity implements AdapterVie
             }
         });
 
-    }
+        closetViewModel = new ViewModelProvider(this).get(AddToClosetViewModel.class);
+        closetViewModel.isSuccess().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                if (aBoolean) {
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    Toast.makeText(AddToClosetActivity.this, "upload successful", Toast.LENGTH_SHORT).show();
+                    finish();
 
-    }
+                } else {
+                    binding.proB.setVisibility(View.GONE);
+                    binding.continueText.setVisibility(View.VISIBLE);
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
+                }
+            }
+        });
+
+        binding.loginContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String note = binding.note.getText().toString();
+
+                // this is jus a check
+                if (isImageCropped) {
+                    //do send cropped image
+                } else if (uri != null) {
+                    //do send uri
+                } else if (bitmap != null) {
+                    // do send camera image
+                } else {
+                    Toast.makeText(AddToClosetActivity.this, "No image found", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (category.equals("Category")) {
+                    Toast.makeText(AddToClosetActivity.this, "Invalid category", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (season.equals("Season")) {
+                    Toast.makeText(AddToClosetActivity.this, "Invalid season", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+
+                if (note.isEmpty()) {
+                    note = "No note added";
+                }
+
+                binding.proB.setVisibility(View.VISIBLE);
+                binding.continueText.setVisibility(View.GONE);
+
+                if (isImageCropped) {
+                    //do send cropped image
+
+                    Bitmap bitmap = donBitmap;
+
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+
+                    closetViewModel.uploadImageByte(byteArrayOutputStream.toByteArray(), category, season, note);
+
+                } else if (uri != null) {
+                    //do send uri
+
+                    closetViewModel.uploadImageUri(uri, category, season, note);
+
+                } else if (bitmap != null) {
+                    // do send camera image
+
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                    closetViewModel.uploadImageByte(byteArrayOutputStream.toByteArray(), category, season, note);
+                }
+
+            }
+        });
 
     }
 
@@ -168,20 +269,18 @@ public class AddToClosetActivity extends AppCompatActivity implements AdapterVie
             return;
         }
 
+        Intent intent = new Intent(this, CropActivity.class);
         if (uri == null) {
             //send bitmap
 
-            Intent intent = new Intent(this, CropActivity.class);
             intent.putExtra("bitmap", bitmap);
-            startActivityForResult(intent, 4);
 
         } else {
 
             //send uri
-            Intent intent = new Intent(this, CropActivity.class);
             intent.putExtra("uri", uri);
-            startActivityForResult(intent, 4);
         }
+        startActivityForResult(intent, 4);
 
     }
 

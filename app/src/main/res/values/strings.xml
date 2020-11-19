@@ -25,9 +25,10 @@
         <item>Dry</item>
         <item>Short Dry</item>
         <item>Harmattan</item>
-        <item>Fall/Autumn</item>
+        <item>Fall or Autumn</item>
         <item>Spring</item>
         <item>Summer</item>
         <item>Winter</item>
+        <item>Any</item>
     </string-array>
 </resources>
