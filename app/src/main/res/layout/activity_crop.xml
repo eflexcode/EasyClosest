@@ -6,38 +6,70 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:background="#000"
         android:layout_height="match_parent"
+        android:background="#000"
         tools:context=".CropActivity">
 
-        <com.theartofdev.edmodo.cropper.CropImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <com.theartofdev.edmodo.cropper.CropImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/cropImageView"
             android:layout_width="match_parent"
-            android:layout_above="@id/done"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_above="@id/d" />
 
-        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
-            android:id="@+id/done"
+        <LinearLayout
+            android:id="@+id/d"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30sp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/login_btn_background2"
-            android:text="Done"
             android:layout_alignParentBottom="true"
-            android:textAllCaps="false"
-            android:textColor="#fff"
-            android:textSize="15sp"
-            android:textStyle="normal"
-            app:finalCornerAngle="30dp"
-            app:initialCornerAngle="30dp"
-            app:spinning_bar_color="#FFF"
-            app:spinning_bar_padding="2dp"
-            app:spinning_bar_width="4dp" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                android:id="@+id/crop"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/login_btn_background2"
+                android:text="Crop"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                app:finalCornerAngle="30dp"
+                app:initialCornerAngle="30dp"
+                app:spinning_bar_color="#FFF"
+                app:spinning_bar_padding="2dp"
+                app:spinning_bar_width="4dp" />
+
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                android:id="@+id/done"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5sp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/login_btn_background2"
+                android:text="Done"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                app:finalCornerAngle="30dp"
+                app:initialCornerAngle="30dp"
+                app:spinning_bar_color="#FFF"
+                app:spinning_bar_padding="2dp"
+                app:spinning_bar_width="4dp" />
+
+        </LinearLayout>
+
 
     </RelativeLayout>
 </layout>

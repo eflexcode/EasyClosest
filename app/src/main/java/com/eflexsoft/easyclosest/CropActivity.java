@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 
 import com.eflexsoft.easyclosest.databinding.ActivityCropBinding;
 import com.theartofdev.edmodo.cropper.CropImageView;
@@ -14,6 +15,7 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 public class CropActivity extends AppCompatActivity {
 
     Intent intent;
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,40 @@ public class CropActivity extends AppCompatActivity {
             Uri uri = (Uri) intent.getParcelableExtra("uri");
             binding.cropImageView.setImageUriAsync(uri);
         }
+
+        binding.cropImageView.setOnCropImageCompleteListener(new CropImageView.OnCropImageCompleteListener() {
+            @Override
+            public void onCropImageComplete(CropImageView view, CropImageView.CropResult result) {
+
+            }
+        });
+
+        binding.crop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bitmap = binding.cropImageView.getCroppedImage(600, 600);
+
+                if (bitmap != null) {
+                    binding.cropImageView.setImageBitmap(bitmap);
+                }
+            }
+        });
+
+        binding.done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (bitmap != null) {
+                    binding.cropImageView.setImageBitmap(bitmap);
+
+                    Intent intent = new Intent();
+                    intent.putExtra("doneBitmap", bitmap);
+                    setResult(RESULT_OK,intent);
+                    finish();
+
+                }
+            }
+        });
 
     }
 }

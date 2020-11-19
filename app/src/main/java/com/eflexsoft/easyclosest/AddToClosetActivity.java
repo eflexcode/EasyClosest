@@ -4,12 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Camera;
 import android.media.session.MediaSession;
@@ -33,11 +36,13 @@ import java.io.ByteArrayOutputStream;
 public class AddToClosetActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     PickImageViewModel viewModel;
-    int imageFileRequestCode;
-    int imageCamera;
+    int imageFileRequestCode = 7;
+    int imageCamera = 9;
     Uri uri;
     ActivityAddToClosetBinding binding;
     Bitmap bitmap;
+    Bitmap donBitmap;
+    boolean isImageCropped;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,9 +81,27 @@ public class AddToClosetActivity extends AppCompatActivity implements AdapterVie
             public void onChanged(Boolean aBoolean) {
 
                 if (aBoolean) {
-                    pickImageCamera();
+
+                    if (ActivityCompat.checkSelfPermission(AddToClosetActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(AddToClosetActivity.this, new String[]{Manifest.permission.CAMERA}, 3);
+                    } else {
+                        pickImageCamera();
+                    }
+
                 } else {
-                    pickImageFile();
+
+                    if (ActivityCompat.checkSelfPermission(AddToClosetActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED &&
+                            ActivityCompat.checkSelfPermission(AddToClosetActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED
+                    ) {
+
+                        ActivityCompat.requestPermissions(AddToClosetActivity.this,
+                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+                                        Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+
+                    } else {
+                        pickImageFile();
+                    }
+
                 }
 
             }
@@ -187,6 +210,17 @@ public class AddToClosetActivity extends AppCompatActivity implements AdapterVie
             binding.maindImage.setImageURI(uri);
 
             bitmap = null;
+            isImageCropped = false;
+            donBitmap = null;
+
+        }
+
+        if (requestCode == 4 && resultCode == RESULT_OK) {
+
+            donBitmap = (Bitmap) data.getParcelableExtra("doneBitmap");
+            isImageCropped = true;
+            binding.maindImage.setImageBitmap(donBitmap);
+
 
         }
 
@@ -204,7 +238,8 @@ public class AddToClosetActivity extends AppCompatActivity implements AdapterVie
             binding.maindImage.setImageBitmap(bitmap);
 
             uri = null;
-
+            isImageCropped = false;
+            donBitmap = null;
         }
 
     }
