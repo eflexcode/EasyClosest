@@ -36,9 +36,12 @@ import java.util.Map;
 
 public class AddToClosetRepository {
 
+    //TODO make all repositories a singleton
+
     Context context;
     public MutableLiveData<Boolean> isUploadInSuccessful = new MutableLiveData<>();
 
+    boolean isUpdated = true;
 
     public AddToClosetRepository(Context context) {
         this.context = context;
@@ -73,7 +76,6 @@ public class AddToClosetRepository {
                     String id = String.valueOf(time);
 
                     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-//                    DocumentReference reference = firestore.collection(category).document(id);
                     DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid())
                             .collection(category).document(id);
 
@@ -85,51 +87,55 @@ public class AddToClosetRepository {
                         public void onSuccess(Void aVoid) {
                             isUploadInSuccessful.setValue(true);
 
-//                            doCategoryCount(category);
-                            DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid());
+                            DocumentReference reference = firestore.collection("ClosetsItemCount").document(FirebaseAuth.getInstance().getUid());
+
                             reference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
                                 @Override
                                 public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                                    if (value.exists()){
 
-                                    }else {
-                                        Map<String, Object> map = new HashMap<>();
-                                        map.put("count", 1);
-
-                                        reference.set(map);
-                                    }
-                                }
-                            });
+                                    if (value.exists()) {
 
 
-                            firestore.runTransaction(new Transaction.Function<Void>() {
-                                @Nullable
-                                @Override
-                                public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
-                                    Toast.makeText(context, "vbbbbbbbbbbbbbbbbb", Toast.LENGTH_SHORT).show();
-                                    DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid());
+                                        if (value.contains(category)) {
+                                            if (isUpdated) {
 
-                                    DocumentSnapshot documentSnapshot = transaction.get(reference);
+                                                firestore.runTransaction(new Transaction.Function<Void>() {
+                                                    @Nullable
+                                                    @Override
+                                                    public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
+//                                                Toast.makeText(context, "vbbbbbbbbbbbbbbbbb", Toast.LENGTH_SHORT).show();
+                                                        DocumentReference reference = firestore.collection("ClosetsItemCount").document(FirebaseAuth.getInstance().getUid());
 
-                                    if (documentSnapshot.contains(category)) {
-                                        long count = documentSnapshot.getLong(category) + 1;
+                                                        DocumentSnapshot documentSnapshot = transaction.get(reference);
 
-                                        transaction.update(reference, category, count);
-                                        Toast.makeText(context, "vbbbbbbbbbbbbbbbbb", Toast.LENGTH_SHORT).show();
+                                                        long count = documentSnapshot.getLong(category) + 1;
+
+                                                        transaction.update(reference, category, count);
+
+                                                        isUpdated = false;
+
+                                                        return null;
+                                                    }
+
+                                                });
+                                            }
+
+                                        } else {
+                                            Map<String, Object> map = new HashMap<>();
+                                            map.put(category, 1);
+                                            reference.update(map);
+                                            isUpdated = false;
+                                        }
                                     } else {
-                                        Toast.makeText(context, "ggggggggggggggggggggggg", Toast.LENGTH_SHORT).show();
-                                        long count = 0;
-
                                         Map<String, Object> map = new HashMap<>();
-                                        map.put("count", count);
-
-                                        reference.update(map);
+                                        map.put(category, 1);
+                                        reference.set(map);
+                                        isUpdated = false;
                                     }
 
-
-                                    return null;
                                 }
                             });
+
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -160,27 +166,8 @@ public class AddToClosetRepository {
             @Override
             public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
                 Toast.makeText(context, "vbbbbbbbbbbbbbbbbb", Toast.LENGTH_SHORT).show();
-//                DocumentReference reference = firebaseFirestore.collection("Closets").document(FirebaseAuth.getInstance().getUid());
-//
-//                DocumentSnapshot documentSnapshot = transaction.get(reference);
-//
-//                if (documentSnapshot.contains(category)) {
-//                    long count = documentSnapshot.getLong(category) + 1;
-//
-//                    transaction.update(reference, category, count);
-//                    Toast.makeText(context, "vbbbbbbbbbbbbbbbbb", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(context, "ggggggggggggggggggggggg", Toast.LENGTH_SHORT).show();
-//                    long count = 0;
-//
-//                    Map<String, Object> map = new HashMap<>();
-//                    map.put("count", count);
-//
-//                    reference.update(map);
-//                }
 
-
-                return null;
+               return null;
             }
         });
 
@@ -219,7 +206,6 @@ public class AddToClosetRepository {
                     String id = String.valueOf(time);
 
                     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-//                    DocumentReference reference = firestore.collection(category).document(id);
 
                     DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid())
                             .collection(category).document(id);
@@ -230,7 +216,85 @@ public class AddToClosetRepository {
                         @Override
                         public void onSuccess(Void aVoid) {
                             isUploadInSuccessful.setValue(true);
-                            doCategoryCount(category);
+
+                            DocumentReference reference = firestore.collection("ClosetsItemCount").document(FirebaseAuth.getInstance().getUid());
+
+                            reference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                @Override
+                                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+
+                                    if (value.exists()) {
+
+
+                                        if (value.contains(category)) {
+                                            if (isUpdated) {
+
+                                                firestore.runTransaction(new Transaction.Function<Void>() {
+                                                    @Nullable
+                                                    @Override
+                                                    public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
+//                                                Toast.makeText(context, "vbbbbbbbbbbbbbbbbb", Toast.LENGTH_SHORT).show();
+                                                        DocumentReference reference = firestore.collection("ClosetsItemCount").document(FirebaseAuth.getInstance().getUid());
+
+                                                        DocumentSnapshot documentSnapshot = transaction.get(reference);
+
+                                                        long count = documentSnapshot.getLong(category) + 1;
+
+                                                        transaction.update(reference, category, count);
+
+                                                        isUpdated = false;
+
+                                                        return null;
+                                                    }
+
+                                                });
+                                            }
+
+                                        } else {
+                                            Map<String, Object> map = new HashMap<>();
+                                            map.put(category, 1);
+                                            reference.update(map);
+                                            isUpdated = false;
+                                        }
+                                    } else {
+                                        Map<String, Object> map = new HashMap<>();
+                                        map.put(category, 1);
+                                        reference.set(map);
+                                        isUpdated = false;
+                                    }
+
+                                }
+                            });
+
+
+//                            firestore.runTransaction(new Transaction.Function<Void>() {
+//                                @Nullable
+//                                @Override
+//                                public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
+//                                    Toast.makeText(context, "vbbbbbbbbbbbbbbbbb", Toast.LENGTH_SHORT).show();
+//                                    DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid());
+//
+//                                    DocumentSnapshot documentSnapshot = transaction.get(reference);
+//
+//                                    if (documentSnapshot.contains(category)) {
+//                                        long count = documentSnapshot.getLong(category) + 1;
+//
+//                                        transaction.update(reference, category, count);
+//                                        Toast.makeText(context, "vbbbbbbbbbbbbbbbbb", Toast.LENGTH_SHORT).show();
+//                                    } else {
+//                                        Toast.makeText(context, "ggggggggggggggggggggggg", Toast.LENGTH_SHORT).show();
+//                                        long count = 0;
+//
+//                                        Map<String, Object> map = new HashMap<>();
+//                                        map.put("count", count);
+//
+//                                        reference.update(map);
+//                                    }
+//
+//
+//                                    return null;
+//                                }
+//                            });
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
