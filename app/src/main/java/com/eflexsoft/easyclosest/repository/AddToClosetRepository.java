@@ -160,12 +160,10 @@ public class AddToClosetRepository {
     private void doCategoryCount(String category) {
 
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
-        Toast.makeText(context, "dddddddddddddddddddddd", Toast.LENGTH_SHORT).show();
         firebaseFirestore.runTransaction(new Transaction.Function<Void>() {
             @Nullable
             @Override
             public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
-                Toast.makeText(context, "vbbbbbbbbbbbbbbbbb", Toast.LENGTH_SHORT).show();
 
                return null;
             }
