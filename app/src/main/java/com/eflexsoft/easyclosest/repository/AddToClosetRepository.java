@@ -7,6 +7,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 
 import com.eflexsoft.easyclosest.model.ClosetItem;
@@ -16,15 +17,22 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.Transaction;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class AddToClosetRepository {
 
@@ -65,7 +73,10 @@ public class AddToClosetRepository {
                     String id = String.valueOf(time);
 
                     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-                    DocumentReference reference = firestore.collection(category).document(id);
+//                    DocumentReference reference = firestore.collection(category).document(id);
+                    DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid())
+                            .collection(category).document(id);
+
 
                     ClosetItem closetItem = new ClosetItem(time, downloadUri, category, season, note);
 
@@ -73,6 +84,52 @@ public class AddToClosetRepository {
                         @Override
                         public void onSuccess(Void aVoid) {
                             isUploadInSuccessful.setValue(true);
+
+//                            doCategoryCount(category);
+                            DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid());
+                            reference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                                @Override
+                                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                                    if (value.exists()){
+
+                                    }else {
+                                        Map<String, Object> map = new HashMap<>();
+                                        map.put("count", 1);
+
+                                        reference.set(map);
+                                    }
+                                }
+                            });
+
+
+                            firestore.runTransaction(new Transaction.Function<Void>() {
+                                @Nullable
+                                @Override
+                                public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
+                                    Toast.makeText(context, "vbbbbbbbbbbbbbbbbb", Toast.LENGTH_SHORT).show();
+                                    DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid());
+
+                                    DocumentSnapshot documentSnapshot = transaction.get(reference);
+
+                                    if (documentSnapshot.contains(category)) {
+                                        long count = documentSnapshot.getLong(category) + 1;
+
+                                        transaction.update(reference, category, count);
+                                        Toast.makeText(context, "vbbbbbbbbbbbbbbbbb", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(context, "ggggggggggggggggggggggg", Toast.LENGTH_SHORT).show();
+                                        long count = 0;
+
+                                        Map<String, Object> map = new HashMap<>();
+                                        map.put("count", count);
+
+                                        reference.update(map);
+                                    }
+
+
+                                    return null;
+                                }
+                            });
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -90,6 +147,41 @@ public class AddToClosetRepository {
                 isUploadInSuccessful.setValue(false);
             }
 
+        });
+
+    }
+
+    private void doCategoryCount(String category) {
+
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+        Toast.makeText(context, "dddddddddddddddddddddd", Toast.LENGTH_SHORT).show();
+        firebaseFirestore.runTransaction(new Transaction.Function<Void>() {
+            @Nullable
+            @Override
+            public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
+                Toast.makeText(context, "vbbbbbbbbbbbbbbbbb", Toast.LENGTH_SHORT).show();
+//                DocumentReference reference = firebaseFirestore.collection("Closets").document(FirebaseAuth.getInstance().getUid());
+//
+//                DocumentSnapshot documentSnapshot = transaction.get(reference);
+//
+//                if (documentSnapshot.contains(category)) {
+//                    long count = documentSnapshot.getLong(category) + 1;
+//
+//                    transaction.update(reference, category, count);
+//                    Toast.makeText(context, "vbbbbbbbbbbbbbbbbb", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(context, "ggggggggggggggggggggggg", Toast.LENGTH_SHORT).show();
+//                    long count = 0;
+//
+//                    Map<String, Object> map = new HashMap<>();
+//                    map.put("count", count);
+//
+//                    reference.update(map);
+//                }
+
+
+                return null;
+            }
         });
 
     }
@@ -127,7 +219,10 @@ public class AddToClosetRepository {
                     String id = String.valueOf(time);
 
                     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-                    DocumentReference reference = firestore.collection(category).document(id);
+//                    DocumentReference reference = firestore.collection(category).document(id);
+
+                    DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid())
+                            .collection(category).document(id);
 
                     ClosetItem closetItem = new ClosetItem(time, downloadUri, category, season, note);
 
@@ -135,6 +230,7 @@ public class AddToClosetRepository {
                         @Override
                         public void onSuccess(Void aVoid) {
                             isUploadInSuccessful.setValue(true);
+                            doCategoryCount(category);
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
