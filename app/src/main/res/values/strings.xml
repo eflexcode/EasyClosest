@@ -2,6 +2,7 @@
     <string name="app_name">Easy closet</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="load_more_item">Load more item</string>
     <string-array name="spinner_array">
         <item>Category</item>
         <item>Shirts</item>

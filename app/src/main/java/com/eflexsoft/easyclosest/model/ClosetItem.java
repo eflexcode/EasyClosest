@@ -1,5 +1,13 @@
 package com.eflexsoft.easyclosest.model;
 
+import androidx.databinding.BindingAdapter;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
+import com.eflexsoft.easyclosest.R;
+import com.rishabhharit.roundedimageview.RoundedImageView;
+
 public class ClosetItem {
 
     private long id;
@@ -7,16 +15,18 @@ public class ClosetItem {
     private String category;
     private String season;
     private String note;
+    private boolean isFavourite;
 
     public ClosetItem() {
     }
 
-    public ClosetItem(long id, String imageUrl, String category, String season, String note) {
+    public ClosetItem(long id, String imageUrl, String category, String season, String note,boolean isFavourite) {
         this.id = id;
         this.imageUrl = imageUrl;
         this.category = category;
         this.season = season;
         this.note = note;
+        this.isFavourite = isFavourite;
     }
 
     public long getId() {
@@ -58,4 +68,26 @@ public class ClosetItem {
     public void setNote(String note) {
         this.note = note;
     }
+
+    public boolean isFavourite() {
+        return isFavourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
+    }
+
+
+    @BindingAdapter("android:setItemImage")
+    public static void setItemImage(RoundedImageView roundedImageView,String imageUrl){
+
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.color.brown2);
+        requestOptions.error(R.color.brown2);
+//        requestOptions.
+
+        Glide.with(roundedImageView).load(imageUrl).apply(requestOptions).transition(DrawableTransitionOptions.withCrossFade()).into(roundedImageView);
+
+    }
+
 }

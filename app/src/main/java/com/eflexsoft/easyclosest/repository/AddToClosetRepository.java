@@ -80,7 +80,7 @@ public class AddToClosetRepository {
                             .collection(category).document(id);
 
 
-                    ClosetItem closetItem = new ClosetItem(time, downloadUri, category, season, note);
+                    ClosetItem closetItem = new ClosetItem(time, downloadUri, category, season, note,false);
 
                     reference.set(closetItem).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -208,7 +208,7 @@ public class AddToClosetRepository {
                     DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid())
                             .collection(category).document(id);
 
-                    ClosetItem closetItem = new ClosetItem(time, downloadUri, category, season, note);
+                    ClosetItem closetItem = new ClosetItem(time, downloadUri, category, season, note,false);
 
                     reference.set(closetItem).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

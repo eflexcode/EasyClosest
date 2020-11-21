@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+        <variable
+            name="itemData"
+            type="com.eflexsoft.easyclosest.model.ClosetItem" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.rishabhharit.roundedimageview.RoundedImageView
+            android:id="@+id/item_image"
+            android:layout_width="350dp"
+            android:layout_height="240dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:scaleType="centerCrop"
+            android:setItemImage="@{itemData.imageUrl}"
+            app:cornerRadius="5dp"
+            app:roundedCorners="all" />
+
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignEnd="@id/item_image"
+            android:layout_margin="10dp"
+            android:background="@android:color/transparent"
+            android:src="@{itemData.favourite ? @drawable/ic_heart_bold2 : @drawable/ic_heart_stroke2}" />
+
+        <TextView
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_image"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="@{itemData.note}"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/item_image"
+            android:layout_centerVertical="true"
+            android:backgroundTint="@color/colorPrimary"
+            android:contentDescription="@string/load_more_item"
+            android:src="@drawable/ic_plus_symbol"
+            android:visibility="gone"
+            app:tint="@color/colorPrimaryDark" />
+
+    </RelativeLayout>
+</layout>
