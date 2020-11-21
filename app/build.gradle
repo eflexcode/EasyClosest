@@ -116,4 +116,11 @@ dependencies {
 
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
     implementation 'com.rishabhharit.roundedimageview:RoundedImageView:0.8.4'
+
+    // FirebaseUI for Cloud Firestore
+    implementation 'com.firebaseui:firebase-ui-firestore:6.3.0'
+
+//    def paging_version = "2.1.2"
+//    implementation "androidx.paging:paging-runtime:$paging_version"
+
 }

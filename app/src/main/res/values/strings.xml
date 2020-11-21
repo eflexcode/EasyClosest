@@ -9,7 +9,7 @@
         <item>Trousers</item>
         <item>Harts</item>
         <item>Caps</item>
-        <item>Head warmer</item>
+        <item>Head warmers</item>
         <item>Belts</item>
         <item>Coats</item>
         <item>Sweaters</item>
@@ -17,7 +17,7 @@
         <item>Jewries</item>
         <item>Accessories</item>
         <item>Shoes</item>
-        <item>Underwear\'s</item>
+        <item>Underwear</item>
     </string-array>
 
     <string-array name="weather">
