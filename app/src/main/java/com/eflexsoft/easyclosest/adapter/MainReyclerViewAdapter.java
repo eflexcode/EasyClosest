@@ -107,6 +107,11 @@ public class MainReyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Main
             protected void onBindViewHolder(@NonNull ClosetItemViewHolder holder, int position, @NonNull ClosetItem model) {
 
                 holder.binding.setItemData(model);
+                if (position == getCurrentList().size()-1){
+                    holder.binding.fab.setVisibility(View.VISIBLE);
+                }else {
+                    holder.binding.fab.setVisibility(View.GONE);
+                }
 
             }
 

@@ -9,6 +9,8 @@ public class CategoryCount {
     private long Headwarmer;
     private long Belts;
     private long Sweaters;
+    private long Coats;
+    private long Glasses;
     private long Jewries;
     private long Accessories;
     private long Shoes;
@@ -17,7 +19,7 @@ public class CategoryCount {
     public CategoryCount() {
     }
 
-    public CategoryCount(long Shirts, long Trousers, long Harts, long Caps, long Headwarmer, long Belts, long Sweaters, long Jewries, long Accessories, long Shoes, long Underwear) {
+    public CategoryCount(long Shirts, long Trousers, long Coats, long Harts, long Glasses, long Caps, long Headwarmer, long Belts, long Sweaters, long Jewries, long Accessories, long Shoes, long Underwear) {
         this.Shirts = Shirts;
         this.Trousers = Trousers;
         this.Harts = Harts;
@@ -29,6 +31,8 @@ public class CategoryCount {
         this.Accessories = Accessories;
         this.Shoes = Shoes;
         this.Underwear = Underwear;
+        this.Coats = Coats;
+        this.Glasses = Glasses;
     }
 
     public long getShirts() {
@@ -115,7 +119,19 @@ public class CategoryCount {
         return Underwear;
     }
 
-    public void setUnderwear(long Underwear) {
-        this.Underwear = Underwear;
+    public long getCoats() {
+        return Coats;
+    }
+
+    public void setCoats(long Coats) {
+        this.Coats = Coats;
+    }
+
+    public long getGlasses() {
+        return Glasses;
+    }
+
+    public void setGlasses(long Glasses) {
+        this.Glasses = Glasses;
     }
 }

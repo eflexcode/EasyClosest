@@ -20,6 +20,7 @@ public class AllClothsRepository {
 
     public AllClothsRepository(Context context) {
         this.context = context;
+        getCategoryCount();
     }
 
     public void getCategoryCount() {

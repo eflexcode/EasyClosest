@@ -49,9 +49,29 @@ public class AllClothsFragment extends Fragment {
             @Override
             public void onChanged(CategoryCount categoryCount) {
 
-                closetCategoryItems.add(new ClosetCategoryItem("Shirts","("+categoryCount.getAccessories()+")"));
+                if (categoryCount != null) {
 
-                adapter.submitList(closetCategoryItems);
+                    closetCategoryItems.add(new ClosetCategoryItem("Shirts", "(" + categoryCount.getShirts() + ")"));
+                    closetCategoryItems.add(new ClosetCategoryItem("Trousers", "(" + categoryCount.getTrousers() + ")"));
+                    closetCategoryItems.add(new ClosetCategoryItem("Harts", "(" + categoryCount.getHarts() + ")"));
+                    closetCategoryItems.add(new ClosetCategoryItem("Caps", "(" + categoryCount.getCaps() + ")"));
+                    closetCategoryItems.add(new ClosetCategoryItem("Head warmers", "(" + categoryCount.getHeadwarmer() + ")"));
+                    closetCategoryItems.add(new ClosetCategoryItem("Belts", "(" + categoryCount.getBelts() + ")"));
+                    closetCategoryItems.add(new ClosetCategoryItem("Coats", "(" + categoryCount.getCoats() + ")"));
+                    closetCategoryItems.add(new ClosetCategoryItem("Sweaters", "(" + categoryCount.getSweaters() + ")"));
+                    closetCategoryItems.add(new ClosetCategoryItem("Glasses", "(" + categoryCount.getGlasses() + ")"));
+                    closetCategoryItems.add(new ClosetCategoryItem("Jewries", "(" + categoryCount.getJewries() + ")"));
+                    closetCategoryItems.add(new ClosetCategoryItem("Accessories", "(" + categoryCount.getAccessories() + ")"));
+                    closetCategoryItems.add(new ClosetCategoryItem("Shoes", "(" + categoryCount.getShoes() + ")"));
+                    closetCategoryItems.add(new ClosetCategoryItem("Underwear", "(" + categoryCount.getUnderwear() + ")"));
+
+                    binding.proBar.setVisibility(View.GONE);
+                    adapter.submitList(closetCategoryItems);
+                    binding.sorry.setVisibility(View.GONE);
+                }else {
+                    binding.sorry.setVisibility(View.VISIBLE);
+                    binding.proBar.setVisibility(View.GONE);
+                }
             }
         });
 

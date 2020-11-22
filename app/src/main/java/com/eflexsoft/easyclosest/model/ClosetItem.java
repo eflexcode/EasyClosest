@@ -82,8 +82,8 @@ public class ClosetItem {
     public static void setItemImage(RoundedImageView roundedImageView,String imageUrl){
 
         RequestOptions requestOptions = new RequestOptions();
-        requestOptions.placeholder(R.color.brown2);
-        requestOptions.error(R.color.brown2);
+        requestOptions.placeholder(R.color.brown);
+        requestOptions.error(R.color.brown);
 //        requestOptions.
 
         Glide.with(roundedImageView).load(imageUrl).apply(requestOptions).transition(DrawableTransitionOptions.withCrossFade()).into(roundedImageView);

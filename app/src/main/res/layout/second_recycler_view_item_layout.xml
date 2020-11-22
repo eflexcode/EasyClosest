@@ -16,8 +16,8 @@
 
         <com.rishabhharit.roundedimageview.RoundedImageView
             android:id="@+id/item_image"
-            android:layout_width="350dp"
-            android:layout_height="240dp"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
@@ -35,28 +35,29 @@
             android:src="@{itemData.favourite ? @drawable/ic_heart_bold2 : @drawable/ic_heart_stroke2}" />
 
         <TextView
-            android:layout_width="350dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/item_image"
             android:layout_marginStart="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="0dp"
             android:gravity="center"
             android:singleLine="true"
             android:text="@{itemData.note}"
             android:textColor="#000"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@id/item_image"
+            android:layout_toEndOf="@id/item_image"
             android:layout_centerVertical="true"
             android:backgroundTint="@color/colorPrimary"
             android:contentDescription="@string/load_more_item"
-            android:src="@drawable/ic_plus_symbol"
+            android:src="@drawable/ic_next"
+            android:layout_marginEnd="10dp"
             android:visibility="gone"
             app:tint="@color/colorPrimaryDark" />
 

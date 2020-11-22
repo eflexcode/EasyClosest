@@ -184,7 +184,7 @@ public class AddToClosetActivity extends AppCompatActivity {
 
 
                 if (note.isEmpty()) {
-                    note = "No note added";
+                    note = " ";
                 }
 
                 binding.proB.setVisibility(View.VISIBLE);
