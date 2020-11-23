@@ -1,11 +1,19 @@
 package com.eflexsoft.easyclosest.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
+import androidx.core.view.ViewCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.paging.PagedList;
@@ -14,6 +22,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.eflexsoft.easyclosest.ClosetItemDetailsActivity;
 import com.eflexsoft.easyclosest.R;
 import com.eflexsoft.easyclosest.databinding.FirstRecycleViewLayoutBinding;
 import com.eflexsoft.easyclosest.databinding.SecondRecyclerViewItemLayoutBinding;
@@ -36,7 +45,7 @@ public class MainReyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Main
         this.context = context;
     }
 
-   static DiffUtil.ItemCallback<ClosetCategoryItem> callback = new DiffUtil.ItemCallback<ClosetCategoryItem>() {
+    static DiffUtil.ItemCallback<ClosetCategoryItem> callback = new DiffUtil.ItemCallback<ClosetCategoryItem>() {
         @Override
         public boolean areItemsTheSame(@NonNull ClosetCategoryItem oldItem, @NonNull ClosetCategoryItem newItem) {
             return oldItem.equals(newItem);
@@ -78,6 +87,14 @@ public class MainReyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Main
 
         }
 
+        if (getCurrentList().size() - 1 == position) {
+
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 850);
+            layoutParams.setMargins(0, 0, 0, 10);
+
+            holder.binding.m.setLayoutParams(layoutParams);
+        }
+
     }
 
     private void setSecondRecyclerViewAdapter(ViewHolder holder, String categoryName) {
@@ -107,11 +124,33 @@ public class MainReyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Main
             protected void onBindViewHolder(@NonNull ClosetItemViewHolder holder, int position, @NonNull ClosetItem model) {
 
                 holder.binding.setItemData(model);
-                if (position == getCurrentList().size()-1){
+                if (position == getCurrentList().size() - 1) {
                     holder.binding.fab.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     holder.binding.fab.setVisibility(View.GONE);
                 }
+
+                holder.binding.itemImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(context, ClosetItemDetailsActivity.class);
+                        intent.putExtra("itemImageUrl", model.getImageUrl());
+
+                        Pair<View, String> viewStringPair = Pair.create(holder.binding.itemImage, ViewCompat.getTransitionName(holder.binding.itemImage));
+
+                        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                                (Activity) context, viewStringPair
+                        );
+
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                            context.startActivity(intent, activityOptionsCompat.toBundle());
+                        } else {
+                            context.startActivity(intent);
+                        }
+
+                    }
+                });
 
             }
 

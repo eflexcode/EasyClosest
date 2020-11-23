@@ -54,7 +54,7 @@ public class CropActivity extends AppCompatActivity {
         binding.crop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bitmap = binding.cropImageView.getCroppedImage(600, 600);
+                bitmap = binding.cropImageView.getCroppedImage(800, 800);
 
                 if (bitmap != null) {
                     binding.cropImageView.setImageBitmap(bitmap);

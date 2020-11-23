@@ -96,7 +96,7 @@ public class AddToClosetRepository {
                                     if (value.exists()) {
 
 
-                                        if (value.contains(category.trim())) {
+                                        if (value.contains(category.replaceAll("\\s",""))) {
                                             if (isUpdated) {
 
                                                 firestore.runTransaction(new Transaction.Function<Void>() {
@@ -108,9 +108,9 @@ public class AddToClosetRepository {
 
                                                         DocumentSnapshot documentSnapshot = transaction.get(reference);
 
-                                                        long count = documentSnapshot.getLong(category.trim()) + 1;
+                                                        long count = documentSnapshot.getLong(category.replaceAll("\\s","")) + 1;
 
-                                                        transaction.update(reference, category.trim(), count);
+                                                        transaction.update(reference, category.replaceAll("\\s",""), count);
 
                                                         isUpdated = false;
 
@@ -122,13 +122,13 @@ public class AddToClosetRepository {
 
                                         } else {
                                             Map<String, Object> map = new HashMap<>();
-                                            map.put(category.trim(), 1);
+                                            map.put(category.replaceAll("\\s",""), 1);
                                             reference.update(map);
                                             isUpdated = false;
                                         }
                                     } else {
                                         Map<String, Object> map = new HashMap<>();
-                                        map.put(category.trim(), 1);
+                                        map.put(category.replaceAll("\\s",""), 1);
                                         reference.set(map);
                                         isUpdated = false;
                                     }
@@ -224,7 +224,7 @@ public class AddToClosetRepository {
                                     if (value.exists()) {
 
 
-                                        if (value.contains(category.trim())) {
+                                        if (value.contains(category.replaceAll("\\s",""))) {
                                             if (isUpdated) {
 
                                                 firestore.runTransaction(new Transaction.Function<Void>() {
@@ -236,9 +236,9 @@ public class AddToClosetRepository {
 
                                                         DocumentSnapshot documentSnapshot = transaction.get(reference);
 
-                                                        long count = documentSnapshot.getLong(category.trim()) + 1;
+                                                        long count = documentSnapshot.getLong(category.replaceAll("\\s","")) + 1;
 
-                                                        transaction.update(reference, category.trim(), count);
+                                                        transaction.update(reference, category.replaceAll("\\s",""), count);
 
                                                         isUpdated = false;
 
@@ -250,13 +250,13 @@ public class AddToClosetRepository {
 
                                         } else {
                                             Map<String, Object> map = new HashMap<>();
-                                            map.put(category.trim(), 1);
+                                            map.put(category.replaceAll("\\s",""), 1);
                                             reference.update(map);
                                             isUpdated = false;
                                         }
                                     } else {
                                         Map<String, Object> map = new HashMap<>();
-                                        map.put(category.trim(), 1);
+                                        map.put(category.replaceAll("\\s",""), 1);
                                         reference.set(map);
                                         isUpdated = false;
                                     }

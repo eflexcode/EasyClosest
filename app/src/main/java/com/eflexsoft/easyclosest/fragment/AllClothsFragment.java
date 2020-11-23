@@ -44,7 +44,6 @@ public class AllClothsFragment extends Fragment {
 
         List<ClosetCategoryItem> closetCategoryItems = new ArrayList<>();
 
-
         viewModel.getCategoryCountMutableLiveData().observe(getViewLifecycleOwner(), new Observer<CategoryCount>() {
             @Override
             public void onChanged(CategoryCount categoryCount) {
@@ -53,9 +52,9 @@ public class AllClothsFragment extends Fragment {
 
                     closetCategoryItems.add(new ClosetCategoryItem("Shirts", "(" + categoryCount.getShirts() + ")"));
                     closetCategoryItems.add(new ClosetCategoryItem("Trousers", "(" + categoryCount.getTrousers() + ")"));
-                    closetCategoryItems.add(new ClosetCategoryItem("Harts", "(" + categoryCount.getHarts() + ")"));
+                    closetCategoryItems.add(new ClosetCategoryItem("Hats", "(" + categoryCount.getHats() + ")"));
                     closetCategoryItems.add(new ClosetCategoryItem("Caps", "(" + categoryCount.getCaps() + ")"));
-                    closetCategoryItems.add(new ClosetCategoryItem("Head warmers", "(" + categoryCount.getHeadwarmer() + ")"));
+                    closetCategoryItems.add(new ClosetCategoryItem("Head warmers", "(" + categoryCount.getHeadwarmers() + ")"));
                     closetCategoryItems.add(new ClosetCategoryItem("Belts", "(" + categoryCount.getBelts() + ")"));
                     closetCategoryItems.add(new ClosetCategoryItem("Coats", "(" + categoryCount.getCoats() + ")"));
                     closetCategoryItems.add(new ClosetCategoryItem("Sweaters", "(" + categoryCount.getSweaters() + ")"));

@@ -4,9 +4,9 @@ public class CategoryCount {
 
     private long Shirts;
     private long Trousers;
-    private long Harts;
+    private long Hats;
     private long Caps;
-    private long Headwarmer;
+    private long Headwarmers;
     private long Belts;
     private long Sweaters;
     private long Coats;
@@ -19,12 +19,12 @@ public class CategoryCount {
     public CategoryCount() {
     }
 
-    public CategoryCount(long Shirts, long Trousers, long Coats, long Harts, long Glasses, long Caps, long Headwarmer, long Belts, long Sweaters, long Jewries, long Accessories, long Shoes, long Underwear) {
+    public CategoryCount(long Shirts, long Trousers, long Coats, long Hats, long Glasses, long Caps, long Headwarmers, long Belts, long Sweaters, long Jewries, long Accessories, long Shoes, long Underwear) {
         this.Shirts = Shirts;
         this.Trousers = Trousers;
-        this.Harts = Harts;
+        this.Hats = Hats;
         this.Caps = Caps;
-        this.Headwarmer = Headwarmer;
+        this.Headwarmers = Headwarmers;
         this.Belts = Belts;
         this.Sweaters = Sweaters;
         this.Jewries = Jewries;
@@ -51,12 +51,12 @@ public class CategoryCount {
         this.Trousers = Trousers;
     }
 
-    public long getHarts() {
-        return Harts;
+    public long getHats() {
+        return Hats;
     }
 
-    public void setHarts(long Harts) {
-        this.Harts = Harts;
+    public void setHats(long Harts) {
+        this.Hats = Harts;
     }
 
     public long getCaps() {
@@ -67,12 +67,12 @@ public class CategoryCount {
         this.Caps = Caps;
     }
 
-    public long getHeadwarmer() {
-        return Headwarmer;
+    public long getHeadwarmers() {
+        return Headwarmers;
     }
 
-    public void setHeadwarmer(String headwarmer) {
-        this.Headwarmer = Headwarmer;
+    public void setHeadwarmers(String headwarmer) {
+        this.Headwarmers = Headwarmers;
     }
 
     public long getBelts() {
