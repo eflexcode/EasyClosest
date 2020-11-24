@@ -2,7 +2,6 @@
 
 <layout>
 
-
     <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -19,8 +18,9 @@
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
-                android:background="#fff">
+                android:background="#fff"
+                app:contentScrim="@color/colorPrimaryDark"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -29,19 +29,25 @@
                     <ImageView
                         android:id="@+id/item_image"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="250dp"
                         android:scaleType="centerCrop"
                         android:transitionName="item_image" />
+
+                    <!--                    <ImageView-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="70dp"-->
+                    <!--                        android:scaleType="centerCrop"-->
+                    <!--                        android:src="@drawable/bottom_img_src" />-->
+
 
                 </RelativeLayout>
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolb"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    app:layout_collapseMode="pin"
+                    android:layout_height="?actionBarSize"
                     android:background="@android:color/transparent"
-                    app:titleTextColor="#000" />
+                    app:layout_collapseMode="pin" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -49,8 +55,178 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:orientation="vertical">-->
+
+                    <!--                        <TextView-->
+                    <!--                            android:layout_width="wrap_content"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_marginStart="10dp"-->
+                    <!--                            android:text="Id">-->
+
+                    <!--                        </TextView>-->
+
+                    <!--                        <TextView-->
+                    <!--                            android:layout_width="wrap_content"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_marginStart="10dp"-->
+                    <!--                            android:layout_marginTop="10dp"-->
+                    <!--                            android:text="123446778"-->
+                    <!--                            android:textColor="#000"-->
+                    <!--                            android:textSize="16sp" />-->
+
+
+                    <!--                    </LinearLayout>-->
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:elevation="8dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Category"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="5dp"
+                                android:text="Caps"
+                                android:textColor="#5E5E5E"
+                                android:textSize="13sp" />
+
+                            <!--                        <View-->
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="0.1dp"-->
+                            <!--                            android:layout_marginEnd="5dp"-->
+                            <!--                            android:layout_marginStart="5dp"-->
+                            <!--                            android:layout_marginTop="10dp"-->
+                            <!--                            android:background="#BFBFBF" />-->
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:elevation="8dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Season"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="5dp"
+                                android:text="Summer"
+                                android:textColor="#5E5E5E"
+                                android:textSize="13sp" />
+
+                            <!--                        <View-->
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="0.1dp"-->
+
+                            <!--                            android:layout_marginStart="5dp"-->
+                            <!--                            android:layout_marginTop="10dp"-->
+                            <!--                            android:layout_marginEnd="5dp"-->
+                            <!--                            android:background="#BFBFBF" />-->
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:elevation="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Note"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginTop="5dp"
+                                android:text="In this example, the player has selected four of the five available video tracks. The fifth video track is not selected because it exceeds the capabilities of the device, as indicated by supported=NO_EXCEEDS_CAPABILITIES. The player will adapt between the selected video tracks during playback. When the player adapts from one track to another, it’s logged in a line like the one be"
+                                android:textColor="#5E5E5E"
+                                android:textSize="13sp" />
+
+                            <!--                        <View-->
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="0.1dp"-->
+                            <!--                            android:layout_marginStart="5dp"-->
+                            <!--                            android:layout_marginTop="10dp"-->
+                            <!--                            android:layout_marginEnd="5dp"-->
+                            <!--                            android:background="#BFBFBF" />-->
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </RelativeLayout>
 
         </androidx.core.widget.NestedScrollView>
 

@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
@@ -25,17 +26,22 @@ public class ClosetItemDetailsActivity extends AppCompatActivity {
 
         intent = getIntent();
 
-        ActivityClosetItemDetailsBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_closet_item_details);
+//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
+//        getWindow().restoreHierarchyState();
+
+        ActivityClosetItemDetailsBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_closet_item_details);
 
         binding.appBar.addOnOffsetChangedListener(new AppBarLayout.BaseOnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
 
-                if(verticalOffset != 0){
-
-
-
-                }
+//                if (verticalOffset != 0) {
+//
+//                    setTheme(R.style.Tran2);
+//                } else {
+//                    setTheme(R.style.Tran);
+//                }
 
             }
         });
