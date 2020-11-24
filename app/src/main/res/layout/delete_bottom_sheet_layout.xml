@@ -13,7 +13,7 @@
             android:layout_width="100dp"
             android:layout_height="5dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="7dp"
             android:background="@drawable/tab_indicator_style" />
 
         <TextView
@@ -23,7 +23,7 @@
             android:layout_below="@id/v"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="14dp"
             android:text="Confirm delete"
             android:textColor="#000"
             android:textSize="20sp"
@@ -32,6 +32,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="150dp"
+            android:id="@+id/d"
             android:layout_gravity="center"
             android:layout_below="@id/t"
             android:layout_centerHorizontal="true"
@@ -39,8 +40,34 @@
             android:layout_marginEnd="10dp"
             android:src="@drawable/ic_delete_1_" />
 
+        <TextView
+            android:id="@+id/t2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/d"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:text="Are you sure you want to delete item from your closet"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-        <!--        <LinearLayout-->
+        <TextView
+            android:id="@+id/c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/t2"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:text="for this cannot be undone"
+            android:textColor="#000"
+            android:textSize="15sp"
+            android:textStyle="normal" />
+                <!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->
 <!--            android:layout_below="@id/t"-->
