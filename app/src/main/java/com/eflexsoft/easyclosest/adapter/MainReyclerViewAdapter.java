@@ -140,6 +140,7 @@ public class MainReyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Main
                         intent.putExtra("season",model.getSeason());
                         intent.putExtra("note",model.getNote());
                         intent.putExtra("id",model.getId());
+                        intent.putExtra("isFavorite",model.isFavourite());
 
                         Pair<View, String> viewStringPair = Pair.create(holder.binding.itemImage, ViewCompat.getTransitionName(holder.binding.itemImage));
 

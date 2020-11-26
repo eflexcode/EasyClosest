@@ -59,29 +59,29 @@
                     android:layout_below="@id/img_re"
                     android:background="#DCDBD8" />
 
-                <RelativeLayout
-                    android:id="@+id/spin"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/v"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@drawable/spinner_background">
+<!--                <RelativeLayout-->
+<!--                    android:id="@+id/spin"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@id/v"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:layout_marginTop="15dp"-->
+<!--                    android:background="@drawable/spinner_background">-->
 
-                    <Spinner
-                        android:id="@+id/category_spinner"
-                        android:layout_width="170dp"
-                        android:layout_height="50dp" />
+<!--                    <Spinner-->
+<!--                        android:id="@+id/category_spinner"-->
+<!--                        android:layout_width="170dp"-->
+<!--                        android:layout_height="50dp" />-->
 
-                </RelativeLayout>
+<!--                </RelativeLayout>-->
 
                 <RelativeLayout
                     android:id="@+id/weather"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/spin"
+                    android:layout_below="@id/v"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:background="@drawable/spinner_background">
 
                     <Spinner

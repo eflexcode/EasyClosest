@@ -43,6 +43,7 @@ public class ClosetItemDetailsActivity extends AppCompatActivity {
     String note;
     String id;
     String itemImageUrl;
+    boolean isFavorite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +90,7 @@ public class ClosetItemDetailsActivity extends AppCompatActivity {
         season = intent.getStringExtra("season");
         note = intent.getStringExtra("note");
         id = String.valueOf(intent.getLongExtra("id", 0));
+        isFavorite = intent.getBooleanExtra("isFavorite",false);
 
         binding.category.setText(category);
         binding.season.setText(season);
@@ -194,16 +196,15 @@ public class ClosetItemDetailsActivity extends AppCompatActivity {
                 break;
             case R.id.edit:
 
-
                 Intent intent = new Intent(this, UpdateClosetItemActivity.class);
                 intent.putExtra("itemImageUrl",itemImageUrl);
                 intent.putExtra("category",category);
                 intent.putExtra("season", season);
                 intent.putExtra("note", note);
                 intent.putExtra("id",id);
+                intent.putExtra("isFavorite",isFavorite);
 
                 startActivity(intent);
-
 
                 break;
 
