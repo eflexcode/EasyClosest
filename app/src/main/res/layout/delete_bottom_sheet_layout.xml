@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -30,13 +30,14 @@
             android:textStyle="normal" />
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="150dp"
             android:id="@+id/d"
-            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_below="@id/t"
             android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:src="@drawable/ic_delete_1_" />
 
@@ -47,9 +48,10 @@
             android:layout_below="@id/d"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_margin="5dp"
-            android:text="Are you sure you want to delete item from your closet"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="Are you sure you want to delete item from your closet?"
             android:textColor="#000"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -61,76 +63,129 @@
             android:layout_below="@id/t2"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:gravity="center"
             android:layout_margin="5dp"
+            android:gravity="center"
             android:text="for this cannot be undone"
             android:textColor="#000"
             android:textSize="15sp"
             android:textStyle="normal" />
-                <!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_below="@id/t"-->
-<!--            android:layout_marginTop="20dp"-->
-<!--            android:orientation="vertical">-->
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/add_closet"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:background="?android:selectableItemBackground"-->
-<!--                android:orientation="horizontal">-->
 
-<!--                <ImageView-->
-<!--                    android:layout_width="40dp"-->
-<!--                    android:layout_height="33dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:src="@drawable/ic_wardrobe" />-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/c"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:gravity="center"-->
-<!--                    android:text="My closet"-->
-<!--                    android:textColor="#000"-->
-<!--                    android:textSize="15sp"-->
-<!--                    android:textStyle="normal" />-->
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                android:id="@+id/nope"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/login_btn_background3"
+                android:text="Nope"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                app:finalCornerAngle="30dp"
+                app:initialCornerAngle="30dp"
+                app:spinning_bar_color="#FFF"
+                app:spinning_bar_padding="2dp"
+                app:spinning_bar_width="4dp" />
 
-<!--            </LinearLayout>-->
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+                android:id="@+id/confirmed"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/login_btn_background2"
+                android:text="Confirmed"
+                android:textAllCaps="false"
+                android:textColor="#fff"
+                android:textSize="15sp"
+                android:textStyle="normal"
+                app:finalCornerAngle="30dp"
+                app:initialCornerAngle="30dp"
+                app:spinning_bar_color="#FFF"
+                app:spinning_bar_padding="2dp"
+                app:spinning_bar_width="4dp" />
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/add_daily"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:layout_marginBottom="30dp"-->
-<!--                android:background="?android:selectableItemBackground"-->
-<!--                android:orientation="horizontal">-->
+        </LinearLayout>
 
-<!--                <ImageView-->
-<!--                    android:layout_width="40dp"-->
-<!--                    android:layout_height="33dp"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginEnd="10dp"-->
-<!--                    android:src="@drawable/ic_clothes" />-->
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@id/t"-->
+        <!--            android:layout_marginTop="20dp"-->
+        <!--            android:orientation="vertical">-->
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:text="Daily outfit"-->
-<!--                    android:textColor="#000"-->
-<!--                    android:textSize="15sp"-->
-<!--                    android:textStyle="normal" />-->
+        <!--            <LinearLayout-->
+        <!--                android:id="@+id/add_closet"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="50dp"-->
+        <!--                android:layout_marginTop="10dp"-->
+        <!--                android:background="?android:selectableItemBackground"-->
+        <!--                android:orientation="horizontal">-->
 
-<!--            </LinearLayout>-->
+        <!--                <ImageView-->
+        <!--                    android:layout_width="40dp"-->
+        <!--                    android:layout_height="33dp"-->
+        <!--                    android:layout_gravity="center"-->
+        <!--                    android:layout_marginStart="10dp"-->
+        <!--                    android:layout_marginEnd="10dp"-->
+        <!--                    android:src="@drawable/ic_wardrobe" />-->
 
-<!--        </LinearLayout>-->
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_gravity="center"-->
+        <!--                    android:gravity="center"-->
+        <!--                    android:text="My closet"-->
+        <!--                    android:textColor="#000"-->
+        <!--                    android:textSize="15sp"-->
+        <!--                    android:textStyle="normal" />-->
+
+        <!--            </LinearLayout>-->
+
+        <!--            <LinearLayout-->
+        <!--                android:id="@+id/add_daily"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="50dp"-->
+        <!--                android:layout_marginTop="20dp"-->
+        <!--                android:layout_marginBottom="30dp"-->
+        <!--                android:background="?android:selectableItemBackground"-->
+        <!--                android:orientation="horizontal">-->
+
+        <!--                <ImageView-->
+        <!--                    android:layout_width="40dp"-->
+        <!--                    android:layout_height="33dp"-->
+        <!--                    android:layout_gravity="center"-->
+        <!--                    android:layout_marginStart="10dp"-->
+        <!--                    android:layout_marginEnd="10dp"-->
+        <!--                    android:src="@drawable/ic_clothes" />-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_gravity="center"-->
+        <!--                    android:text="Daily outfit"-->
+        <!--                    android:textColor="#000"-->
+        <!--                    android:textSize="15sp"-->
+        <!--                    android:textStyle="normal" />-->
+
+        <!--            </LinearLayout>-->
+
+        <!--        </LinearLayout>-->
 
     </RelativeLayout>
 </layout>
