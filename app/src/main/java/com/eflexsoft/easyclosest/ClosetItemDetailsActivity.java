@@ -41,7 +41,7 @@ public class ClosetItemDetailsActivity extends AppCompatActivity {
     String category;
     String season;
     String note;
-    String id;
+    long id;
     String itemImageUrl;
     boolean isFavorite;
 
@@ -89,7 +89,7 @@ public class ClosetItemDetailsActivity extends AppCompatActivity {
         category = intent.getStringExtra("category");
         season = intent.getStringExtra("season");
         note = intent.getStringExtra("note");
-        id = String.valueOf(intent.getLongExtra("id", 0));
+        id = intent.getLongExtra("id", 0);
         isFavorite = intent.getBooleanExtra("isFavorite",false);
 
         binding.category.setText(category);

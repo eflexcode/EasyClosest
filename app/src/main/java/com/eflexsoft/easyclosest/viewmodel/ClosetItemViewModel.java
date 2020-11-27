@@ -35,7 +35,7 @@ public class ClosetItemViewModel extends AndroidViewModel {
         return isDeleteInSuccessful;
     }
 
-    public void deleteItem(String category, String id) {
+    public void deleteItem(String category, long id) {
         repository.deleteItem(category, id);
     }
 

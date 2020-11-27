@@ -41,12 +41,12 @@ public class ClosetItemRepository {
         this.context = context;
     }
 
-    public void deleteItem(String category, String id) {
+    public void deleteItem(String category, long id) {
 
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
         DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid())
-                .collection(category).document(id);
+                .collection(category).document(String.valueOf(id));
 
         reference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

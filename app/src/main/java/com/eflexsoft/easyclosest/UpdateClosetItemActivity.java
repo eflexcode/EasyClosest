@@ -58,6 +58,7 @@ public class UpdateClosetItemActivity extends AppCompatActivity {
     String note;
     String itemImageUrl;
     String id;
+    long longId;
     boolean isFavorite;
 
     UpdateClosetItemViewModel closetItemViewModel;
@@ -78,6 +79,8 @@ public class UpdateClosetItemActivity extends AppCompatActivity {
         id = String.valueOf(intent.getLongExtra("id", 0));
         itemImageUrl = intent.getStringExtra("itemImageUrl");
         isFavorite = intent.getBooleanExtra("isFavorite", false);
+
+        longId = intent.getLongExtra("id", 0);
 
         binding.note.setText(note);
         RequestOptions requestOptions = new RequestOptions();
@@ -186,7 +189,7 @@ public class UpdateClosetItemActivity extends AppCompatActivity {
 
                 if (!isImageChanged) {
                     // send gotten url
-                    closetItemViewModel.updateWithStringImage(intent.getLongExtra("id", 2), category, season, note);
+                    closetItemViewModel.updateWithStringImage(longId, category, season, note);
                 } else if (isImageCropped) {
                     //send cropped image
                     Bitmap bitmap = donBitmap;
@@ -195,7 +198,7 @@ public class UpdateClosetItemActivity extends AppCompatActivity {
 
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
 
-                    closetItemViewModel.uploadImageByte(intent.getLongExtra("id", 2),
+                    closetItemViewModel.uploadImageByte(longId,
                             byteArrayOutputStream.toByteArray(), category, season, note);
 
                 } else if (bitmap != null) {
@@ -203,11 +206,11 @@ public class UpdateClosetItemActivity extends AppCompatActivity {
                     ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
 
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-                    closetItemViewModel.uploadImageByte(intent.getLongExtra("id", 2),
+                    closetItemViewModel.uploadImageByte(longId,
                             byteArrayOutputStream.toByteArray(), category, season, note);
                 } else if (uri != null) {
                     //send image uri
-                    closetItemViewModel.uploadImageUri(uri, category, season, note, intent.getLongExtra("id", 2));
+                    closetItemViewModel.uploadImageUri(uri, category, season, note, longId);
                 } else {
                     Toast.makeText(UpdateClosetItemActivity.this, "No image found", Toast.LENGTH_SHORT).show();
                     return;
