@@ -71,7 +71,7 @@
                     <Spinner
                         android:id="@+id/category_spinner"
                         android:layout_width="170dp"
-                        android:layout_height="50dp" />
+                        android:layout_height="40dp" />
 
                 </RelativeLayout>
 
@@ -87,7 +87,7 @@
                     <Spinner
                         android:id="@+id/weather_spinner"
                         android:layout_width="170dp"
-                        android:layout_height="50dp" />
+                        android:layout_height="40dp" />
                 </RelativeLayout>
 
                 <EditText
@@ -124,6 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:textStyle="bold"
                 android:text="Continue to closet"
                 android:textColor="#fff"
                 android:textSize="17sp" />

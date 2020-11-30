@@ -7,6 +7,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#fff"
         tools:context=".AddToDailyOutfitActivity">
 
         <androidx.appcompat.widget.Toolbar
@@ -28,16 +29,23 @@
                 android:layout_height="match_parent">
 
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="130dp"
-                    android:layout_marginBottom="30dp"
-                    android:gravity="center"
+                <!--                <TextView-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="130dp"-->
+                <!--                    android:layout_marginBottom="30dp"-->
+                <!--                    android:gravity="center"-->
+                <!--                    android:id="@+id/no_img"-->
+                <!--                    android:hint="No image picked yet"-->
+                <!--                    android:textColor="#000"-->
+                <!--                    android:textSize="20sp" />-->
+
+                <ImageView
                     android:id="@+id/no_img"
-                    android:hint="No image picked yet"
-                    android:textColor="#000"
-                    android:textSize="20sp" />
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="130dp"
+                    android:src="@drawable/ic_image_gallery" />
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/v2"
@@ -58,8 +66,26 @@
                     <Spinner
                         android:id="@+id/weather_spinner"
                         android:layout_width="170dp"
-                        android:layout_height="50dp" />
+                        android:layout_height="40dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp" />
                 </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/v2"
+                    android:layout_gravity="center"
+                    android:id="@+id/date"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toEndOf="@id/weather"
+                    android:hint="No date picked yet"
+                    android:singleLine="false"
+                    android:text=""
+                    android:textColor="#000"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/note"
@@ -69,7 +95,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="80dp"
                     android:background="@drawable/spinner_background"
                     android:hint="Note (required example for office)"
                     android:maxLines="5"
@@ -77,15 +103,41 @@
                     android:textColor="#000"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/note"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="80dp"
-                    android:hint="No date picked yet"
-                    android:textColor="#000"
-                    android:textSize="20sp" />
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_below="@id/note"-->
+                <!--                    android:layout_marginBottom="80dp"-->
+                <!--                    android:orientation="horizontal">-->
+
+                <!--                    <ImageView-->
+                <!--                        android:layout_width="40dp"-->
+                <!--                        android:layout_height="30dp"-->
+                <!--                        android:layout_marginStart="10dp"-->
+                <!--                        android:src="@drawable/ic_calendar_3" />-->
+
+                <!--                    <TextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_below="@id/note"-->
+                <!--                        android:layout_gravity="center"-->
+                <!--                        android:layout_marginStart="10dp"-->
+                <!--                        android:hint="No date picked yet"-->
+                <!--                        android:textColor="#000"-->
+                <!--                        android:textSize="19sp"-->
+                <!--                        android:textStyle="bold" />-->
+
+                <!--                </LinearLayout>-->
+
+                <!--                <TextView-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_below="@id/note"-->
+                <!--                    android:layout_marginStart="10dp"-->
+                <!--                    android:layout_marginBottom="80dp"-->
+                <!--                    android:hint="No date picked yet"-->
+                <!--                    android:textColor="#000"-->
+                <!--                    android:textSize="20sp" />-->
 
             </RelativeLayout>
         </androidx.core.widget.NestedScrollView>
@@ -112,7 +164,8 @@
                 android:gravity="center"
                 android:text="Add daily outfit"
                 android:textColor="#fff"
-                android:textSize="17sp" />
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
             <ProgressBar
                 android:id="@+id/pro_B"

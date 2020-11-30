@@ -13,7 +13,6 @@
             android:layout_centerHorizontal="true"
             app:cornerRadius="10dp"
             android:layout_margin="10dp"
-            android:scaleType="centerCrop"
             app:roundedCorners="all" />
 
     </RelativeLayout>

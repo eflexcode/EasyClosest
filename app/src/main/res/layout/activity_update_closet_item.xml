@@ -42,13 +42,13 @@
                         android:layout_height="250dp"
                         android:layout_margin="10dp" />
 
-<!--                    <ImageView-->
-<!--                        android:id="@+id/imageP_h"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="50dp"-->
-<!--                        android:layout_centerInParent="true"-->
-<!--                        android:layout_margin="10dp"-->
-<!--                        android:src="@drawable/ic_image_gallery" />-->
+                    <!--                    <ImageView-->
+                    <!--                        android:id="@+id/imageP_h"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="50dp"-->
+                    <!--                        android:layout_centerInParent="true"-->
+                    <!--                        android:layout_margin="10dp"-->
+                    <!--                        android:src="@drawable/ic_image_gallery" />-->
 
                 </RelativeLayout>
 
@@ -59,21 +59,21 @@
                     android:layout_below="@id/img_re"
                     android:background="#DCDBD8" />
 
-<!--                <RelativeLayout-->
-<!--                    android:id="@+id/spin"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_below="@id/v"-->
-<!--                    android:layout_marginStart="10dp"-->
-<!--                    android:layout_marginTop="15dp"-->
-<!--                    android:background="@drawable/spinner_background">-->
+                <!--                <RelativeLayout-->
+                <!--                    android:id="@+id/spin"-->
+                <!--                    android:layout_width="wrap_content"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_below="@id/v"-->
+                <!--                    android:layout_marginStart="10dp"-->
+                <!--                    android:layout_marginTop="15dp"-->
+                <!--                    android:background="@drawable/spinner_background">-->
 
-<!--                    <Spinner-->
-<!--                        android:id="@+id/category_spinner"-->
-<!--                        android:layout_width="170dp"-->
-<!--                        android:layout_height="50dp" />-->
+                <!--                    <Spinner-->
+                <!--                        android:id="@+id/category_spinner"-->
+                <!--                        android:layout_width="170dp"-->
+                <!--                        android:layout_height="50dp" />-->
 
-<!--                </RelativeLayout>-->
+                <!--                </RelativeLayout>-->
 
                 <RelativeLayout
                     android:id="@+id/weather"
@@ -87,7 +87,7 @@
                     <Spinner
                         android:id="@+id/weather_spinner"
                         android:layout_width="170dp"
-                        android:layout_height="50dp" />
+                        android:layout_height="40dp" />
                 </RelativeLayout>
 
                 <EditText
@@ -126,7 +126,8 @@
                 android:gravity="center"
                 android:text="Update"
                 android:textColor="#fff"
-                android:textSize="17sp" />
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
             <ProgressBar
                 android:id="@+id/pro_B"
