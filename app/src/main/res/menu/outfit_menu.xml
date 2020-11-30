@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/pick_date"
+        android:icon="@drawable/ic_add_date"
+        android:title="pick date"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/pick_image_file"
+        android:icon="@drawable/ic_add_image_calender"
+        android:title="Add image"
+        app:showAsAction="ifRoom" />
+
+
+</menu>

@@ -3,6 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="load_more_item">Load more item</string>
+    <string name="file_provider" translatable="false">com.eflexsoft.easyclosest.fileprovider</string>
+
     <string-array name="spinner_array">
         <item>Category</item>
         <item>Shirts</item>
@@ -32,4 +34,15 @@
         <item>Winter</item>
         <item>Any</item>
     </string-array>
+    <string name="pick_single">Please select your image</string>
+
+    <plurals name="pick_multi">
+        <item quantity="one">One image selected</item>
+        <item quantity="other">%1$d images selected</item>
+    </plurals>
+    <plurals name="pick_multi_more">
+        <item quantity="one">Please select one more image…</item>
+        <item quantity="other">Please select %1$d more images…</item>
+    </plurals>
+    <string name="pick_multi_limit">You have more than %1$d images selected…</string>
 </resources>

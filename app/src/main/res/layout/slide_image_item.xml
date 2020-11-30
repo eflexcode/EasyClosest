@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.rishabhharit.roundedimageview.RoundedImageView
+            android:id="@+id/image_slide"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            app:cornerRadius="10dp"
+            android:layout_margin="10dp"
+            android:scaleType="centerCrop"
+            app:roundedCorners="all" />
+
+    </RelativeLayout>
+
+</layout>
