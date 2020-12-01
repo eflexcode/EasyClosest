@@ -2,17 +2,25 @@
 
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="url"
+            type="com.eflexsoft.easyclosest.model.ImageItem" />
+
+    </data>
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <com.rishabhharit.roundedimageview.RoundedImageView
             android:id="@+id/image_slide"
             android:layout_width="300dp"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
+            android:layout_height="290dp"
             android:layout_margin="10dp"
             app:cornerRadius="10dp"
+            android:setItemImage="@{url.url}"
             android:scaleType="centerCrop"
             app:roundedCorners="all" />
 

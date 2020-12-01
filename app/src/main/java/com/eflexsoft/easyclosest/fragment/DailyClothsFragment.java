@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.paging.PagedList;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -45,10 +46,10 @@ public class DailyClothsFragment extends Fragment {
             }
         });
 
-        RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(2, RecyclerView.HORIZONTAL);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
 
         binding.outfitRecyclerView.setLayoutManager(layoutManager);
-
+        initRecyclerView();
         return view;
 
     }
@@ -62,10 +63,9 @@ public class DailyClothsFragment extends Fragment {
 
         PagedList.Config config = new PagedList.Config.Builder()
                 .setEnablePlaceholders(false)
-                .setPrefetchDistance(30)
-                .setPageSize(20)
-                .setInitialLoadSizeHint(10)
-                .setMaxSize(30)
+                .setPrefetchDistance(10)
+                .setInitialLoadSizeHint(8)
+                .setPageSize(30)
                 .build();
 
         FirestorePagingOptions<OutfitItem> options = new FirestorePagingOptions.Builder<OutfitItem>()
@@ -75,6 +75,6 @@ public class DailyClothsFragment extends Fragment {
 
         OutfitAdapter adapter = new OutfitAdapter(options);
         binding.outfitRecyclerView.setAdapter(adapter);
-
+        binding.swipe.setRefreshing(false);
     }
 }
