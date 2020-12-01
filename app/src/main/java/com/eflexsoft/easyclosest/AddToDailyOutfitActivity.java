@@ -138,7 +138,7 @@ public class AddToDailyOutfitActivity extends AppCompatActivity implements Botto
                 binding.proB.setVisibility(View.VISIBLE);
                 binding.continueText.setVisibility(View.GONE);
 
-                viewModel.addToOutfit(uriList,season,note,date);
+                viewModel.addToOutfit(uriList, season, note, date);
 
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
@@ -158,7 +158,7 @@ public class AddToDailyOutfitActivity extends AppCompatActivity implements Botto
                         AlertDialog dialog = alertDialog.create();
                         dialog.show();
                     }
-                },7000);
+                }, 7000);
 
             }
         });
@@ -200,7 +200,7 @@ public class AddToDailyOutfitActivity extends AppCompatActivity implements Botto
                 } else {
 
                     new BottomSheetImagePicker.Builder(getString(R.string.file_provider))
-                            .multiSelect(3, 6)
+                            .multiSelect(4, 6)
                             .multiSelectTitles(
                                     R.plurals.pick_multi,
                                     R.plurals.pick_multi_more,
@@ -214,6 +214,7 @@ public class AddToDailyOutfitActivity extends AppCompatActivity implements Botto
                 }
 
                 break;
+
             case R.id.pick_date:
 
                 PickDateFragment pickDateFragment = new PickDateFragment();

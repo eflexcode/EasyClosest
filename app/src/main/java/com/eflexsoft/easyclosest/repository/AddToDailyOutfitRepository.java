@@ -58,7 +58,7 @@ public class AddToDailyOutfitRepository {
                 .collection("items").document(id);
 
         Map<String, Object> map = new HashMap<>();
-        map.put("id", id);
+        map.put("id", timeMillis);
         map.put("season", season);
         map.put("note", note);
         map.put("date", date);
