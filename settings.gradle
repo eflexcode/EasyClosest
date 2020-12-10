@@ -1,5 +1,3 @@
 include ':mylibrary'
-include ':pickerapp'
-include ':tedpicker'
 include ':app'
 rootProject.name = "Easy closest"

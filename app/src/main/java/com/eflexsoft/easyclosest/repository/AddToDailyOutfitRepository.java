@@ -43,6 +43,21 @@ public class AddToDailyOutfitRepository {
 
     }
 
+    public void delete(String id) {
+
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        DocumentReference reference = firestore.collection("Outfit").document(FirebaseAuth.getInstance().getUid())
+                .collection("items").document(id);
+
+        reference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(context, "Delete successful", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
     public void addToOutfit(List<Uri> uriList, String season, String note, String date) {
 
         long timeMillis = System.currentTimeMillis();

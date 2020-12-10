@@ -18,6 +18,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.eflexsoft.easyclosest.ClosetItemDetailsActivity;
+import com.eflexsoft.easyclosest.OutfitDatiledActivity;
 import com.eflexsoft.easyclosest.R;
 import com.eflexsoft.easyclosest.databinding.FirstRecycleViewLayoutBinding;
 import com.eflexsoft.easyclosest.databinding.OutfitItemBinding;
@@ -37,6 +38,7 @@ public class OutfitAdapter extends FirestorePagingAdapter<OutfitItem, OutfitAdap
 
     public OutfitAdapter(@NonNull FirestorePagingOptions<OutfitItem> options, Context context) {
         super(options);
+        this.context = context;
     }
 
     @Override
@@ -48,7 +50,7 @@ public class OutfitAdapter extends FirestorePagingAdapter<OutfitItem, OutfitAdap
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(context, ClosetItemDetailsActivity.class);
+                Intent intent = new Intent(context, OutfitDatiledActivity.class);
                 intent.putExtra("id", model.getId());
                 intent.putExtra("season", model.getSeason());
                 intent.putExtra("note", model.getNote());

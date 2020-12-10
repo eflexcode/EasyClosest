@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    tools:context=".ChangeOutfitImageActivity">
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/five" />
+
+    <!--    <Button-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_marginStart="30dp"-->
+    <!--        android:layout_marginEnd="30dp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        android:textSize="20sp"-->
+    <!--        android:textColor="#fff"-->
+    <!--        android:textAllCaps="false"-->
+    <!--        android:text="Change image"-->
+    <!--        android:layout_marginBottom="30dp"-->
+    <!--        android:background="@drawable/tab_indicator_style"/>-->
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toStartOf="@id/div"
+        android:background="@drawable/log_in_btn_background"
+        android:text="Add image"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/div"
+        android:layout_width="0.1dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:background="@android:color/transparent" />
+
+    <Button
+        android:id="@+id/login_continue"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toEndOf="@id/div"
+        android:background="@drawable/log_in_btn_background2"
+        android:text="Upload"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

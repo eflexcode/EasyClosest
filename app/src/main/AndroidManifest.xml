@@ -21,8 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OutfitDatiledActivity"></activity>
-        <!-- <activity -->
+        <activity android:name=".ChangeOutfitImageActivity"></activity>
+        <activity android:name=".OutfitDatiledActivity" /> <!-- <activity -->
         <!-- android:name="com.gun0912.tedpicker.ImagePickerActivity" -->
         <!-- android:screenOrientation="portrait" /> -->
         <activity

@@ -13,6 +13,7 @@
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
             app:cornerRadius="10dp"
+
             android:scaleType="centerCrop"
             app:roundedCorners="all" />
 

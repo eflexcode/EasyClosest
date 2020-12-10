@@ -2,41 +2,220 @@
 
 <layout>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".OutfitDatiledActivity">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolb"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="#fff"
-            android:elevation="5dp"
-            app:title="Outfit Details"
-            app:titleTextColor="#000" />
+            android:layout_height="wrap_content">
 
-        <com.github.islamkhsh.CardSliderViewPager
-            android:id="@+id/viewPager"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolb"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#fff"
+                android:elevation="5dp"
+                app:layout_scrollFlags="snap|enterAlways|scroll"
+                app:title="Details"
+                app:titleTextColor="#000" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_below="@id/toolb"
-            android:layout_marginTop="10dp"
-            app:auto_slide_time="4"
-            app:cardSlider_indicator="@id/indicator"
-            app:cardSlider_otherPagesWidth="24dp"
-            app:cardSlider_pageMargin="12dp"
-            app:cardSlider_smallScaleFactor="0.5" />
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <com.github.islamkhsh.CardSliderIndicator
-            android:id="@+id/indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/viewPager"
-            android:layout_marginTop="5dp"
-            app:indicatorsToShow="6" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    </RelativeLayout>
+
+                <com.github.islamkhsh.CardSliderViewPager
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    app:auto_slide_time="4"
+                    app:cardSlider_indicator="@id/indicator"
+                    app:cardSlider_otherPagesWidth="24dp"
+                    app:cardSlider_pageMargin="0dp"
+                    app:cardSlider_smallScaleFactor="0.5" />
+
+                <com.github.islamkhsh.CardSliderIndicator
+                    android:id="@+id/indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/viewPager"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    app:indicatorsToShow="6" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/indicator"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textStyle="bold"
+                    android:text="Wednesday, 9 December 2020"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/date"
+                    android:orientation="vertical">
+
+
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:orientation="vertical">-->
+
+                    <!--                        <TextView-->
+                    <!--                            android:layout_width="wrap_content"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_marginStart="10dp"-->
+                    <!--                            android:text="Id">-->
+
+                    <!--                        </TextView>-->
+
+                    <!--                        <TextView-->
+                    <!--                            android:layout_width="wrap_content"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_marginStart="10dp"-->
+                    <!--                            android:layout_marginTop="10dp"-->
+                    <!--                            android:text="123446778"-->
+                    <!--                            android:textColor="#000"-->
+                    <!--                            android:textSize="16sp" />-->
+
+
+                    <!--                    </LinearLayout>-->
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:elevation="5dp"
+                        app:cardCornerRadius="7dp">
+
+                        <View
+                            android:layout_width="5dp"
+                            android:layout_height="match_parent"
+                            android:background="#D50000" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Season"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/season"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="25dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:text=""
+                                android:textColor="#5E5E5E"
+                                android:textSize="13sp" />
+
+                            <!--                        <View-->
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="0.1dp"-->
+
+                            <!--                            android:layout_marginStart="5dp"-->
+                            <!--                            android:layout_marginTop="10dp"-->
+                            <!--                            android:layout_marginEnd="5dp"-->
+                            <!--                            android:background="#BFBFBF" />-->
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="5dp">
+
+                        <View
+                            android:layout_width="5dp"
+                            android:layout_height="match_parent"
+                            android:background="#AA00FF" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="10dp"
+                                android:text="Note"
+                                android:textColor="#000"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/note"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="25dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
+                                android:text=""
+                                android:textColor="#5E5E5E"
+                                android:textSize="13sp" />
+
+                            <!--                        <View-->
+                            <!--                            android:layout_width="match_parent"-->
+                            <!--                            android:layout_height="0.1dp"-->
+                            <!--                            android:layout_marginStart="5dp"-->
+                            <!--                            android:layout_marginTop="10dp"-->
+                            <!--                            android:layout_marginEnd="5dp"-->
+                            <!--                            android:background="#BFBFBF" />-->
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <!--        <TextView-->
+                <!--            android:id="@+id/category"-->
+                <!--            android:layout_width="match_parent"-->
+                <!--            android:layout_height="wrap_content"-->
+                <!--            android:layout_below="@id/date"-->
+                <!--            android:textColor="#000"-->
+                <!--            android:layout_marginTop="5dp"-->
+                <!--            android:layout_marginStart="20dp"-->
+                <!--            android:text="Hed warmer- winter"-->
+                <!--            android:textSize="23sp" />-->
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

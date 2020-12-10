@@ -11,25 +11,26 @@
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="wrap_content"
+        android:id="@+id/card"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="5dp"
         android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:background="?android:selectableItemBackground"
-        android:id="@+id/card"
         android:elevation="8dp"
         app:cardCornerRadius="12dp">
 
         <RelativeLayout
-            android:layout_width="180dp"
-            android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground">
 
 
             <GridLayout
                 android:id="@+id/grid_v"
-                android:layout_width="180dp"
+                android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:orientation="vertical">
 
@@ -42,7 +43,7 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
                     android:scaleType="centerCrop"
-                    android:setItemImage="@{outfitItem.imageUrl1}"/>
+                    android:setItemImage="@{outfitItem.imageUrl1}" />
 
                 <ImageView
                     android:id="@+id/image2"
@@ -75,7 +76,7 @@
                     android:layout_marginEnd="5dp"
                     android:layout_marginBottom="5dp"
                     android:scaleType="centerCrop"
-                    android:setItemImage="@{outfitItem.imageUrl4}"/>
+                    android:setItemImage="@{outfitItem.imageUrl4}" />
             </GridLayout>
 
             <TextView
@@ -112,10 +113,10 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/date"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="7dp"
                 android:ellipsize="end"
-                android:layout_marginTop="10dp"
                 android:maxLines="2"
                 android:text="@{outfitItem.season}"
                 android:textSize="12sp"

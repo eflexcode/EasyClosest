@@ -1,6 +1,7 @@
 package com.eflexsoft.easyclosest;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
@@ -44,7 +45,7 @@ public class ClosetItemDetailsActivity extends AppCompatActivity {
     long id;
     String itemImageUrl;
     boolean isFavorite;
-
+    ActivityClosetItemDetailsBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +54,7 @@ public class ClosetItemDetailsActivity extends AppCompatActivity {
         intent = getIntent();
         viewModel = new ViewModelProvider(this).get(ClosetItemViewModel.class);
 
-        ActivityClosetItemDetailsBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_closet_item_details);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_closet_item_details);
         setSupportActionBar(binding.toolb);
         setTitle("");
         binding.toolb.setNavigationIcon(R.drawable.ic_left_arrow2);
@@ -90,7 +91,7 @@ public class ClosetItemDetailsActivity extends AppCompatActivity {
         season = intent.getStringExtra("season");
         note = intent.getStringExtra("note");
         id = intent.getLongExtra("id", 0);
-        isFavorite = intent.getBooleanExtra("isFavorite",false);
+        isFavorite = intent.getBooleanExtra("isFavorite", false);
 
         binding.category.setText(category);
         binding.season.setText(season);
@@ -197,14 +198,14 @@ public class ClosetItemDetailsActivity extends AppCompatActivity {
             case R.id.edit:
 
                 Intent intent = new Intent(this, UpdateClosetItemActivity.class);
-                intent.putExtra("itemImageUrl",itemImageUrl);
-                intent.putExtra("category",category);
+                intent.putExtra("itemImageUrl", itemImageUrl);
+                intent.putExtra("category", category);
                 intent.putExtra("season", season);
                 intent.putExtra("note", note);
-                intent.putExtra("id",id);
-                intent.putExtra("isFavorite",isFavorite);
+                intent.putExtra("id", id);
+                intent.putExtra("isFavorite", isFavorite);
 
-                startActivity(intent);
+                startActivityForResult(intent, 5);
 
                 break;
 
@@ -215,4 +216,24 @@ public class ClosetItemDetailsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (RESULT_OK == resultCode && requestCode == 5) {
+            category = data.getStringExtra("category");
+            season = data.getStringExtra("season");
+            note = data.getStringExtra("note");
+//            id = intent.getLongExtra("id", 0);
+            isFavorite = data.getBooleanExtra("isFavorite", false);
+
+            binding.category.setText(category);
+            binding.season.setText(season);
+
+            if (!note.trim().isEmpty()) {
+                binding.note.setText(note);
+            } else {
+                binding.note.setText("No note was added");
+            }
+        }
+    }
 }

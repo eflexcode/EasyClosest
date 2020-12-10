@@ -228,6 +228,14 @@ public class UpdateClosetItemActivity extends AppCompatActivity {
                 if (aBoolean) {
 
                     Toast.makeText(UpdateClosetItemActivity.this, "upload successful", Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent();
+                    intent.putExtra("category", category);
+                    intent.putExtra("season", season);
+                    intent.putExtra("note", binding.note.getText().toString());
+                    setResult(RESULT_OK,intent);
+                    Toast.makeText(UpdateClosetItemActivity.this, "Changed image may not reflect yet", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateClosetItemActivity.this, "press home button to refresh", Toast.LENGTH_SHORT).show();
                     finish();
 
                 } else {

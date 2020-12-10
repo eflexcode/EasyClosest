@@ -48,12 +48,13 @@ public class MainReyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Main
     static DiffUtil.ItemCallback<ClosetCategoryItem> callback = new DiffUtil.ItemCallback<ClosetCategoryItem>() {
         @Override
         public boolean areItemsTheSame(@NonNull ClosetCategoryItem oldItem, @NonNull ClosetCategoryItem newItem) {
-            return oldItem.equals(newItem);
+            return oldItem.getCategoryName().equals(newItem.getCategoryName()) && oldItem.getCategorySize().equals(newItem.getCategorySize());
+
         }
 
         @Override
         public boolean areContentsTheSame(@NonNull ClosetCategoryItem oldItem, @NonNull ClosetCategoryItem newItem) {
-            return oldItem.getCategoryName().equals(newItem.getCategoryName()) && oldItem.getCategorySize().equals(newItem.getCategorySize());
+            return oldItem.equals(newItem);
         }
     };
 
@@ -136,11 +137,11 @@ public class MainReyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Main
 
                         Intent intent = new Intent(context, ClosetItemDetailsActivity.class);
                         intent.putExtra("itemImageUrl", model.getImageUrl());
-                        intent.putExtra("category",model.getCategory());
-                        intent.putExtra("season",model.getSeason());
-                        intent.putExtra("note",model.getNote());
-                        intent.putExtra("id",model.getId());
-                        intent.putExtra("isFavorite",model.isFavourite());
+                        intent.putExtra("category", model.getCategory());
+                        intent.putExtra("season", model.getSeason());
+                        intent.putExtra("note", model.getNote());
+                        intent.putExtra("id", model.getId());
+                        intent.putExtra("isFavorite", model.isFavourite());
 
                         Pair<View, String> viewStringPair = Pair.create(holder.binding.itemImage, ViewCompat.getTransitionName(holder.binding.itemImage));
 

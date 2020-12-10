@@ -24,5 +24,7 @@ public class AddToDailyOutfitViewModel extends AndroidViewModel {
         repository.addToOutfit(uriList, season, note, date);
     }
 
-
+    public void delete(String id) {
+        repository.delete(id);
+    }
 }

@@ -46,16 +46,15 @@ public class DailyClothsFragment extends Fragment {
             }
         });
 
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
 
-        binding.outfitRecyclerView.setLayoutManager(layoutManager);
         initRecyclerView();
         return view;
 
     }
 
     public void initRecyclerView() {
-
+        RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(2, RecyclerView.VERTICAL);
+        binding.outfitRecyclerView.setLayoutManager(layoutManager);
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
         Query query = firestore.collection("Outfit").document(FirebaseAuth.getInstance().getUid())
@@ -73,8 +72,9 @@ public class DailyClothsFragment extends Fragment {
                 .setQuery(query, config, OutfitItem.class)
                 .build();
 
-        OutfitAdapter adapter = new OutfitAdapter(options);
+        OutfitAdapter adapter = new OutfitAdapter(options, getContext());
         binding.outfitRecyclerView.setAdapter(adapter);
         binding.swipe.setRefreshing(false);
+
     }
 }
