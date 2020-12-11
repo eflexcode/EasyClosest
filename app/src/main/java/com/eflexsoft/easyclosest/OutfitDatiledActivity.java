@@ -58,16 +58,16 @@ public class OutfitDatiledActivity extends AppCompatActivity {
         String imageUrl6 = intent.getStringExtra("imageUrl6");
 
         List<ImageItem2> imageItems = new ArrayList<>();
-        imageItems.add(new ImageItem2(imageUrl1, "imageUrl1"));
-        imageItems.add(new ImageItem2(imageUrl2, "imageUrl2"));
-        imageItems.add(new ImageItem2(imageUrl3, "imageUrl3"));
-        imageItems.add(new ImageItem2(imageUrl4, "imageUrl4"));
+        imageItems.add(new ImageItem2(imageUrl1, "imageUrl1",id));
+        imageItems.add(new ImageItem2(imageUrl2, "imageUrl2",id));
+        imageItems.add(new ImageItem2(imageUrl3, "imageUrl3",id));
+        imageItems.add(new ImageItem2(imageUrl4, "imageUrl4",id));
 
         if (imageUrl5 != null) {
-            imageItems.add(new ImageItem2(imageUrl5, "imageUrl5"));
+            imageItems.add(new ImageItem2(imageUrl5, "imageUrl5",id));
         }
         if (imageUrl6 != null) {
-            imageItems.add(new ImageItem2(imageUrl6, "imageUrl6"));
+            imageItems.add(new ImageItem2(imageUrl6, "imageUrl6",id));
         }
 
         ImageSlideCardAdapter cardAdapter = new ImageSlideCardAdapter(imageItems,this);

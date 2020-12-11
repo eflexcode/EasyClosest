@@ -1,6 +1,7 @@
 package com.eflexsoft.easyclosest.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.eflexsoft.easyclosest.ChangeOutfitImageActivity;
 import com.eflexsoft.easyclosest.R;
 import com.eflexsoft.easyclosest.databinding.ImageItemBinding;
 import com.eflexsoft.easyclosest.databinding.SlideImageItem2Binding;
@@ -37,7 +39,13 @@ public class ImageSlideCardAdapter extends CardSliderAdapter<ImageSlideCardAdapt
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, imageItem2.getName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, ChangeOutfitImageActivity.class);
+                intent.putExtra("url", imageItem2.getUrl());
+                intent.putExtra("name", imageItem2.getName());
+                intent.putExtra("id", imageItem2.getId());
+                intent.putExtra("position",i);
+
+                context.startActivity(intent);
             }
         });
 
