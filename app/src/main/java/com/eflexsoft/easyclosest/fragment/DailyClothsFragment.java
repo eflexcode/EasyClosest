@@ -37,6 +37,8 @@ public class DailyClothsFragment extends Fragment {
 
         View view = binding.getRoot();
 
+        binding.swipe.setRefreshing(true);
+
         binding.swipe.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
         binding.swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -45,7 +47,6 @@ public class DailyClothsFragment extends Fragment {
 
             }
         });
-
 
         initRecyclerView();
         return view;

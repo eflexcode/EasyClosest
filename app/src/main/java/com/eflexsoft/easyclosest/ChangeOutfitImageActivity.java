@@ -3,6 +3,7 @@ package com.eflexsoft.easyclosest;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.Manifest;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.eflexsoft.easyclosest.databinding.ActivityChangeOutfitImageBinding;
+import com.eflexsoft.easyclosest.model.UpdateImage;
 import com.eflexsoft.easyclosest.viewmodel.ChangeOutfitImageViewModel;
 import com.kroegerama.imgpicker.BottomSheetImagePicker;
 import com.kroegerama.imgpicker.ButtonType;
@@ -87,6 +89,9 @@ public class ChangeOutfitImageActivity extends AppCompatActivity implements Bott
                 }
             }
         });
+
+
+
 
     }
 

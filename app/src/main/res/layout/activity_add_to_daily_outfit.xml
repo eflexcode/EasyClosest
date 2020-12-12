@@ -79,11 +79,12 @@
                     android:id="@+id/date"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="20dp"
+                    android:layout_marginEnd="5dp"
                     android:layout_toEndOf="@id/weather"
                     android:hint="No date picked yet"
                     android:singleLine="false"
                     android:text=""
-                    android:textColor="#000"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 

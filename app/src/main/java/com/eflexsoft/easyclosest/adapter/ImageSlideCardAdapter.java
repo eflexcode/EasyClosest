@@ -76,4 +76,8 @@ public class ImageSlideCardAdapter extends CardSliderAdapter<ImageSlideCardAdapt
         }
     }
 
+    public void setImageItem2s(List<ImageItem2> imageItem2s,int position) {
+        this.imageItem2s = imageItem2s;
+       notifyDataSetChanged();
+    }
 }

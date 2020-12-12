@@ -8,8 +8,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.MutableLiveData;
 
 import com.eflexsoft.easyclosest.model.ClosetItem;
+import com.eflexsoft.easyclosest.model.UpdateImage;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,6 +34,7 @@ import java.util.Map;
 public class ChangeOutfitImageRepository {
 
     Context context;
+    public MutableLiveData<UpdateImage> updateImageMutableLiveData = new MutableLiveData<>();
 
     public ChangeOutfitImageRepository(Context context) {
         this.context = context;
@@ -80,8 +83,14 @@ public class ChangeOutfitImageRepository {
                         @Override
                         public void onSuccess(Void aVoid) {
                             Toast.makeText(context, "Upload successful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Go back and refresh layout", Toast.LENGTH_SHORT).show();
+
+                            UpdateImage updateImage = new UpdateImage(name, downloadUri, position, id);
+
+                            updateImageMutableLiveData.setValue(updateImage);
                             StorageReference deleteReference = firebaseStorage.getReferenceFromUrl(oldUrl);
                             deleteReference.delete();
+//                            Toast.makeText(context, "fsdv  ssssssssssssssssssssssssssssss", Toast.LENGTH_SHORT).show();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override

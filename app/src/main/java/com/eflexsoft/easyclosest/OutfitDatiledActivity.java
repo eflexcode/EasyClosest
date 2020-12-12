@@ -23,7 +23,9 @@ import com.eflexsoft.easyclosest.fragment.EditBottomSheetFragment;
 import com.eflexsoft.easyclosest.fragment.PickImageBottomSheetFragment;
 import com.eflexsoft.easyclosest.model.ImageItem;
 import com.eflexsoft.easyclosest.model.ImageItem2;
+import com.eflexsoft.easyclosest.model.UpdateImage;
 import com.eflexsoft.easyclosest.viewmodel.AddToDailyOutfitViewModel;
+import com.eflexsoft.easyclosest.viewmodel.ChangeOutfitImageViewModel;
 import com.eflexsoft.easyclosest.viewmodel.ClosetItemViewModel;
 
 import java.util.ArrayList;
@@ -34,6 +36,11 @@ public class OutfitDatiledActivity extends AppCompatActivity {
     Intent intent;
     ClosetItemViewModel viewModel;
     AddToDailyOutfitViewModel outfitViewModel;
+    ChangeOutfitImageViewModel imageViewModel;
+    String note;
+    String season;
+    String date;
+    long id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,13 +50,14 @@ public class OutfitDatiledActivity extends AppCompatActivity {
         ActivityOutfitDatiledBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_outfit_datiled);
         viewModel = new ViewModelProvider(this).get(ClosetItemViewModel.class);
         outfitViewModel = new ViewModelProvider(this).get(AddToDailyOutfitViewModel.class);
+        imageViewModel = new ViewModelProvider(this).get(ChangeOutfitImageViewModel.class);
 
         intent = getIntent();
         setSupportActionBar(binding.toolb);
-        long id = intent.getLongExtra("id", 0);
-        String note = intent.getStringExtra("note");
-        String season = intent.getStringExtra("season");
-        String date = intent.getStringExtra("date");
+        id = intent.getLongExtra("id", 0);
+        note = intent.getStringExtra("note");
+        season = intent.getStringExtra("season");
+        date = intent.getStringExtra("date");
         String imageUrl1 = intent.getStringExtra("imageUrl1");
         String imageUrl2 = intent.getStringExtra("imageUrl2");
         String imageUrl3 = intent.getStringExtra("imageUrl3");
@@ -58,19 +66,19 @@ public class OutfitDatiledActivity extends AppCompatActivity {
         String imageUrl6 = intent.getStringExtra("imageUrl6");
 
         List<ImageItem2> imageItems = new ArrayList<>();
-        imageItems.add(new ImageItem2(imageUrl1, "imageUrl1",id));
-        imageItems.add(new ImageItem2(imageUrl2, "imageUrl2",id));
-        imageItems.add(new ImageItem2(imageUrl3, "imageUrl3",id));
-        imageItems.add(new ImageItem2(imageUrl4, "imageUrl4",id));
+        imageItems.add(new ImageItem2(imageUrl1, "imageUrl1", id));
+        imageItems.add(new ImageItem2(imageUrl2, "imageUrl2", id));
+        imageItems.add(new ImageItem2(imageUrl3, "imageUrl3", id));
+        imageItems.add(new ImageItem2(imageUrl4, "imageUrl4", id));
 
         if (imageUrl5 != null) {
-            imageItems.add(new ImageItem2(imageUrl5, "imageUrl5",id));
+            imageItems.add(new ImageItem2(imageUrl5, "imageUrl5", id));
         }
         if (imageUrl6 != null) {
-            imageItems.add(new ImageItem2(imageUrl6, "imageUrl6",id));
+            imageItems.add(new ImageItem2(imageUrl6, "imageUrl6", id));
         }
 
-        ImageSlideCardAdapter cardAdapter = new ImageSlideCardAdapter(imageItems,this);
+        ImageSlideCardAdapter cardAdapter = new ImageSlideCardAdapter(imageItems, this);
         binding.viewPager.setAdapter(cardAdapter);
         binding.toolb.setNavigationIcon(R.drawable.ic_left_arrow2);
         binding.toolb.setNavigationOnClickListener(new View.OnClickListener() {
@@ -104,7 +112,14 @@ public class OutfitDatiledActivity extends AppCompatActivity {
 
             }
         });
-
+        imageViewModel.updateImageLiveData().observe(this, new Observer<UpdateImage>() {
+            @Override
+            public void onChanged(UpdateImage updateImage) {
+                imageItems.add(updateImage.getPosition(), new ImageItem2(updateImage.getUrl(), updateImage.getName(), updateImage.getId()));
+                cardAdapter.setImageItem2s(imageItems, updateImage.getPosition());
+                Toast.makeText(OutfitDatiledActivity.this, "svvvvvvvvvvvvvvvvv", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -119,13 +134,13 @@ public class OutfitDatiledActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
-
-            case R.id.delete:
-
-                DeleteBottomSheetFragment fragment = new DeleteBottomSheetFragment();
-                fragment.show(getSupportFragmentManager(), "delete");
-
-                break;
+//
+//            case R.id.delete:
+//
+//                DeleteBottomSheetFragment fragment = new DeleteBottomSheetFragment();
+//                fragment.show(getSupportFragmentManager(), "delete");
+//
+//                break;
             case R.id.edit:
 
 //                Intent intent = new Intent(this, UpdateClosetItemActivity.class);
@@ -138,9 +153,14 @@ public class OutfitDatiledActivity extends AppCompatActivity {
 //
 //                startActivity(intent);
 
-                EditBottomSheetFragment fragment2 = new EditBottomSheetFragment();
-                fragment2.show(getSupportFragmentManager(), "edit");
+//                EditBottomSheetFragment fragment2 = new EditBottomSheetFragment();
+//                fragment2.show(getSupportFragmentManager(), "edit");
 
+                Intent intent = new Intent(this, ChangeOutfitTextActivity.class);
+                intent.putExtra("season", season);
+                intent.putExtra("note", note);
+                intent.putExtra("id", id);
+                startActivity(intent);
                 break;
 
         }
