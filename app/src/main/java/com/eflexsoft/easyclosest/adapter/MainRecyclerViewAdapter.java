@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
 import androidx.core.view.ViewCompat;
@@ -23,6 +22,7 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.eflexsoft.easyclosest.ClosetItemDetailsActivity;
+import com.eflexsoft.easyclosest.FullClosetItemListActivity;
 import com.eflexsoft.easyclosest.R;
 import com.eflexsoft.easyclosest.databinding.FirstRecycleViewLayoutBinding;
 import com.eflexsoft.easyclosest.databinding.SecondRecyclerViewItemLayoutBinding;
@@ -32,15 +32,14 @@ import com.eflexsoft.easyclosest.viewholder.ClosetItemViewHolder;
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-public class MainReyclerViewAdapter extends ListAdapter<ClosetCategoryItem, MainReyclerViewAdapter.ViewHolder> {
+public class MainRecyclerViewAdapter extends ListAdapter<ClosetCategoryItem, MainRecyclerViewAdapter.ViewHolder> {
 
     Context context;
 
-    public MainReyclerViewAdapter(Context context) {
+    public MainRecyclerViewAdapter(Context context) {
         super(callback);
         this.context = context;
     }
@@ -130,6 +129,17 @@ public class MainReyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Main
                 } else {
                     holder.binding.fab.setVisibility(View.GONE);
                 }
+
+                holder.binding.fab.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, FullClosetItemListActivity.class);
+                        intent.putExtra("category", model.getCategory());
+                        context.startActivity(intent);
+
+
+                    }
+                });
 
                 holder.binding.itemImage.setOnClickListener(new View.OnClickListener() {
                     @Override

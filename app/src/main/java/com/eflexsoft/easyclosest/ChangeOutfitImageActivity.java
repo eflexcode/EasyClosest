@@ -90,9 +90,6 @@ public class ChangeOutfitImageActivity extends AppCompatActivity implements Bott
             }
         });
 
-
-
-
     }
 
     @Override

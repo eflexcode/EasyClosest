@@ -37,6 +37,7 @@ public class OutfitDatiledActivity extends AppCompatActivity {
     ClosetItemViewModel viewModel;
     AddToDailyOutfitViewModel outfitViewModel;
     ChangeOutfitImageViewModel imageViewModel;
+
     String note;
     String season;
     String date;
@@ -117,7 +118,7 @@ public class OutfitDatiledActivity extends AppCompatActivity {
             public void onChanged(UpdateImage updateImage) {
                 imageItems.add(updateImage.getPosition(), new ImageItem2(updateImage.getUrl(), updateImage.getName(), updateImage.getId()));
                 cardAdapter.setImageItem2s(imageItems, updateImage.getPosition());
-                Toast.makeText(OutfitDatiledActivity.this, "svvvvvvvvvvvvvvvvv", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(OutfitDatiledActivity.this, "svvvvvvvvvvvvvvvvv", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -135,12 +136,12 @@ public class OutfitDatiledActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
 //
-//            case R.id.delete:
-//
-//                DeleteBottomSheetFragment fragment = new DeleteBottomSheetFragment();
-//                fragment.show(getSupportFragmentManager(), "delete");
-//
-//                break;
+            case R.id.delete:
+
+                DeleteBottomSheetFragment fragment = new DeleteBottomSheetFragment();
+                fragment.show(getSupportFragmentManager(), "delete");
+
+                break;
             case R.id.edit:
 
 //                Intent intent = new Intent(this, UpdateClosetItemActivity.class);
@@ -160,6 +161,7 @@ public class OutfitDatiledActivity extends AppCompatActivity {
                 intent.putExtra("season", season);
                 intent.putExtra("note", note);
                 intent.putExtra("id", id);
+                intent.putExtra("date",date);
                 startActivity(intent);
                 break;
 

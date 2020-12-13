@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.eflexsoft.easyclosest.R;
-import com.eflexsoft.easyclosest.adapter.MainReyclerViewAdapter;
+import com.eflexsoft.easyclosest.adapter.MainRecyclerViewAdapter;
 import com.eflexsoft.easyclosest.databinding.FragmentAllClothsBinding;
 import com.eflexsoft.easyclosest.model.CategoryCount;
 import com.eflexsoft.easyclosest.model.ClosetCategoryItem;
@@ -39,7 +39,7 @@ public class AllClothsFragment extends Fragment {
         View view = binding.getRoot();
 
         binding.mainRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
-        MainReyclerViewAdapter adapter = new MainReyclerViewAdapter(getContext());
+        MainRecyclerViewAdapter adapter = new MainRecyclerViewAdapter(getContext());
         binding.mainRecycler.setAdapter(adapter);
 
         List<ClosetCategoryItem> closetCategoryItems = new ArrayList<>();
