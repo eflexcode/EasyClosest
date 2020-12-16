@@ -36,4 +36,7 @@ public class AddToClosetViewModel extends AndroidViewModel {
     public void uploadImageUri(Uri uri, String category, String season, String note) {
         repository.uploadImageUri(uri, category, season, note);
     }
+    public void doAddToFavorite(String id, String category,boolean isFavourite) {
+        repository.doAddToFavorite(id, category,isFavourite);
+    }
 }

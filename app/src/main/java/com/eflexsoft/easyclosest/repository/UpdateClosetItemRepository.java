@@ -71,7 +71,7 @@ public class UpdateClosetItemRepository {
 
     }
 
-    public void uploadImageByte(long id, byte[] bytes, String category, String season, String note) {
+    public void uploadImageByte(long id, byte[] bytes, String category, String season, String note,String oldImage) {
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         StorageReference storageReference = firebaseStorage.getReference("closetImages");
 
@@ -108,6 +108,8 @@ public class UpdateClosetItemRepository {
                         @Override
                         public void onSuccess(Void aVoid) {
                             isUpdateSuccessful.setValue(true);
+                            StorageReference storageReference1 = FirebaseStorage.getInstance().getReferenceFromUrl(oldImage);
+                            storageReference1.delete();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -129,7 +131,7 @@ public class UpdateClosetItemRepository {
 
     }
 
-    public void uploadImageUri(Uri uri, String category, String season, String note, long id) {
+    public void uploadImageUri(Uri uri, String category, String season, String note, long id,String oldImage) {
         FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         StorageReference storageReference = firebaseStorage.getReference("closetImages");
 
@@ -163,6 +165,8 @@ public class UpdateClosetItemRepository {
                         @Override
                         public void onSuccess(Void aVoid) {
                             isUpdateSuccessful.setValue(true);
+                            StorageReference storageReference1 = FirebaseStorage.getInstance().getReferenceFromUrl(oldImage);
+                            storageReference1.delete();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override

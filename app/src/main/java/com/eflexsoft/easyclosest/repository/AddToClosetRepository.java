@@ -80,7 +80,7 @@ public class AddToClosetRepository {
                             .collection(category).document(id);
 
 
-                    ClosetItem closetItem = new ClosetItem(time, downloadUri, category, season, note,false);
+                    ClosetItem closetItem = new ClosetItem(time, downloadUri, category, season, note, false,FirebaseAuth.getInstance().getUid());
 
                     reference.set(closetItem).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -96,7 +96,7 @@ public class AddToClosetRepository {
                                     if (value.exists()) {
 
 
-                                        if (value.contains(category.replaceAll("\\s",""))) {
+                                        if (value.contains(category.replaceAll("\\s", ""))) {
                                             if (isUpdated) {
 
                                                 firestore.runTransaction(new Transaction.Function<Void>() {
@@ -108,9 +108,9 @@ public class AddToClosetRepository {
 
                                                         DocumentSnapshot documentSnapshot = transaction.get(reference);
 
-                                                        long count = documentSnapshot.getLong(category.replaceAll("\\s","")) + 1;
+                                                        long count = documentSnapshot.getLong(category.replaceAll("\\s", "")) + 1;
 
-                                                        transaction.update(reference, category.replaceAll("\\s",""), count);
+                                                        transaction.update(reference, category.replaceAll("\\s", ""), count);
 
                                                         isUpdated = false;
 
@@ -122,13 +122,13 @@ public class AddToClosetRepository {
 
                                         } else {
                                             Map<String, Object> map = new HashMap<>();
-                                            map.put(category.replaceAll("\\s",""), 1);
+                                            map.put(category.replaceAll("\\s", ""), 1);
                                             reference.update(map);
                                             isUpdated = false;
                                         }
                                     } else {
                                         Map<String, Object> map = new HashMap<>();
-                                        map.put(category.replaceAll("\\s",""), 1);
+                                        map.put(category.replaceAll("\\s", ""), 1);
                                         reference.set(map);
                                         isUpdated = false;
                                     }
@@ -165,7 +165,7 @@ public class AddToClosetRepository {
             @Override
             public Void apply(@NonNull Transaction transaction) throws FirebaseFirestoreException {
 
-               return null;
+                return null;
             }
         });
 
@@ -208,7 +208,7 @@ public class AddToClosetRepository {
                     DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid())
                             .collection(category).document(id);
 
-                    ClosetItem closetItem = new ClosetItem(time, downloadUri, category, season, note,false);
+                    ClosetItem closetItem = new ClosetItem(time, downloadUri, category, season, note, false,FirebaseAuth.getInstance().getUid());
 
                     reference.set(closetItem).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -224,7 +224,7 @@ public class AddToClosetRepository {
                                     if (value.exists()) {
 
 
-                                        if (value.contains(category.replaceAll("\\s",""))) {
+                                        if (value.contains(category.replaceAll("\\s", ""))) {
                                             if (isUpdated) {
 
                                                 firestore.runTransaction(new Transaction.Function<Void>() {
@@ -236,9 +236,9 @@ public class AddToClosetRepository {
 
                                                         DocumentSnapshot documentSnapshot = transaction.get(reference);
 
-                                                        long count = documentSnapshot.getLong(category.replaceAll("\\s","")) + 1;
+                                                        long count = documentSnapshot.getLong(category.replaceAll("\\s", "")) + 1;
 
-                                                        transaction.update(reference, category.replaceAll("\\s",""), count);
+                                                        transaction.update(reference, category.replaceAll("\\s", ""), count);
 
                                                         isUpdated = false;
 
@@ -250,13 +250,13 @@ public class AddToClosetRepository {
 
                                         } else {
                                             Map<String, Object> map = new HashMap<>();
-                                            map.put(category.replaceAll("\\s",""), 1);
+                                            map.put(category.replaceAll("\\s", ""), 1);
                                             reference.update(map);
                                             isUpdated = false;
                                         }
                                     } else {
                                         Map<String, Object> map = new HashMap<>();
-                                        map.put(category.replaceAll("\\s",""), 1);
+                                        map.put(category.replaceAll("\\s", ""), 1);
                                         reference.set(map);
                                         isUpdated = false;
                                     }
@@ -311,6 +311,34 @@ public class AddToClosetRepository {
                 isUploadInSuccessful.setValue(false);
             }
 
+        });
+
+    }
+
+
+    public void doAddToFavorite(String id, String category,boolean isFavourite) {
+
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid())
+                .collection(category).document(id);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("favourite", isFavourite);
+
+        reference.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+                Toast.makeText(context, "added to favourite", Toast.LENGTH_SHORT).show();
+//                DocumentReference reference2 = firestore.collection("Favorites").document(FirebaseAuth.getInstance().getUid())
+//                        .collection("items").document(id);
+//                reference2.set()
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
 
     }

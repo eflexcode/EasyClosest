@@ -15,18 +15,20 @@ public class ClosetItem {
     private String category;
     private String season;
     private String note;
-    private boolean isFavourite;
+    private String userId;
+    private boolean favourite;
 
     public ClosetItem() {
     }
 
-    public ClosetItem(long id, String imageUrl, String category, String season, String note,boolean isFavourite) {
+    public ClosetItem(long id, String imageUrl, String category, String season, String note,boolean favourite,String userId) {
         this.id = id;
         this.imageUrl = imageUrl;
         this.category = category;
         this.season = season;
         this.note = note;
-        this.isFavourite = isFavourite;
+        this.favourite = favourite;
+        this.userId = userId;
     }
 
     public long getId() {
@@ -70,13 +72,20 @@ public class ClosetItem {
     }
 
     public boolean isFavourite() {
-        return isFavourite;
+        return favourite;
     }
 
     public void setFavourite(boolean favourite) {
-        isFavourite = favourite;
+        this.favourite = favourite;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     @BindingAdapter("android:setItemImage")
     public static void setItemImage(RoundedImageView roundedImageView,String imageUrl){

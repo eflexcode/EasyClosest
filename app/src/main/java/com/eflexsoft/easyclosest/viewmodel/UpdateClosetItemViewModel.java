@@ -26,12 +26,12 @@ public class UpdateClosetItemViewModel extends AndroidViewModel {
         repository.updateWithStringImage(id, category, season, note);
     }
 
-    public void uploadImageByte(long id, byte[] bytes, String category, String season, String note) {
-        repository.uploadImageByte(id, bytes, category, season, note);
+    public void uploadImageByte(long id, byte[] bytes, String category, String season, String note,String olgImage) {
+        repository.uploadImageByte(id, bytes, category, season, note,olgImage);
     }
 
-    public void uploadImageUri(Uri uri, String category, String season, String note, long id) {
-        repository.uploadImageUri(uri, category, season, note, id);
+    public void uploadImageUri(Uri uri, String category, String season, String note, long id,String olgImage) {
+        repository.uploadImageUri(uri, category, season, note, id, olgImage);
     }
 
     public LiveData<Boolean> getIsUpdateSuccessful() {

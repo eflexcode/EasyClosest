@@ -199,7 +199,7 @@ public class UpdateClosetItemActivity extends AppCompatActivity {
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
 
                     closetItemViewModel.uploadImageByte(longId,
-                            byteArrayOutputStream.toByteArray(), category, season, note);
+                            byteArrayOutputStream.toByteArray(), category, season, note, itemImageUrl);
 
                 } else if (bitmap != null) {
                     //send camera image
@@ -207,10 +207,10 @@ public class UpdateClosetItemActivity extends AppCompatActivity {
 
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
                     closetItemViewModel.uploadImageByte(longId,
-                            byteArrayOutputStream.toByteArray(), category, season, note);
+                            byteArrayOutputStream.toByteArray(), category, season, note, itemImageUrl);
                 } else if (uri != null) {
                     //send image uri
-                    closetItemViewModel.uploadImageUri(uri, category, season, note, longId);
+                    closetItemViewModel.uploadImageUri(uri, category, season, note, longId, itemImageUrl);
                 } else {
                     Toast.makeText(UpdateClosetItemActivity.this, "No image found", Toast.LENGTH_SHORT).show();
                     return;
@@ -233,7 +233,7 @@ public class UpdateClosetItemActivity extends AppCompatActivity {
                     intent.putExtra("category", category);
                     intent.putExtra("season", season);
                     intent.putExtra("note", binding.note.getText().toString());
-                    setResult(RESULT_OK,intent);
+                    setResult(RESULT_OK, intent);
                     Toast.makeText(UpdateClosetItemActivity.this, "Changed image may not reflect yet", Toast.LENGTH_SHORT).show();
                     Toast.makeText(UpdateClosetItemActivity.this, "press home button to refresh", Toast.LENGTH_SHORT).show();
                     finish();

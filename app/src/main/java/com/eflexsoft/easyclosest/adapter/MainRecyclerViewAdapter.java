@@ -14,7 +14,11 @@ import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
 import androidx.core.view.ViewCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,11 +33,16 @@ import com.eflexsoft.easyclosest.databinding.SecondRecyclerViewItemLayoutBinding
 import com.eflexsoft.easyclosest.model.ClosetCategoryItem;
 import com.eflexsoft.easyclosest.model.ClosetItem;
 import com.eflexsoft.easyclosest.viewholder.ClosetItemViewHolder;
+import com.eflexsoft.easyclosest.viewmodel.AddToClosetViewModel;
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainRecyclerViewAdapter extends ListAdapter<ClosetCategoryItem, MainRecyclerViewAdapter.ViewHolder> {
 
@@ -113,7 +122,6 @@ public class MainRecyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Mai
                 .setInitialLoadSizeHint(8)
                 .build();
 
-
         FirestorePagingOptions<ClosetItem> pagingOptions = new FirestorePagingOptions.Builder<ClosetItem>()
                 .setLifecycleOwner((LifecycleOwner) context)
                 .setQuery(query, config, ClosetItem.class)
@@ -124,6 +132,8 @@ public class MainRecyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Mai
             protected void onBindViewHolder(@NonNull ClosetItemViewHolder holder, int position, @NonNull ClosetItem model) {
 
                 holder.binding.setItemData(model);
+                AddToClosetViewModel viewModel = new ViewModelProvider((ViewModelStoreOwner) context).get(AddToClosetViewModel.class);
+
                 if (position == getCurrentList().size() - 1) {
                     holder.binding.fab.setVisibility(View.VISIBLE);
                 } else {
@@ -167,7 +177,22 @@ public class MainRecyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Mai
 
                     }
                 });
+                holder.binding.love.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
 
+                        if (model.isFavourite()) {
+                            holder.binding.love.setImageResource(R.drawable.ic_heart_stroke2);
+                            viewModel.doAddToFavorite(String.valueOf(model.getId()), model.getCategory(), false);
+                            doAddToFavorite(String.valueOf(model.getId()), model.getCategory(), false);
+                        } else {
+                            holder.binding.love.setImageResource(R.drawable.ic_heart_bold2);
+                            viewModel.doAddToFavorite(String.valueOf(model.getId()), model.getCategory(), true);
+                            doAddToFavorite(String.valueOf(model.getId()), model.getCategory(), true);
+                        }
+
+                    }
+                });
             }
 
             @NonNull
@@ -185,7 +210,18 @@ public class MainRecyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Mai
         holder.binding.secondRecycler.setAdapter(holderFirestorePagingAdapter);
 
     }
+    public void doAddToFavorite(String id, String category,boolean isFavourite) {
 
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+        DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid())
+                .collection(category).document(id);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("isFavourite", isFavourite);
+
+        reference.update(map);
+
+    }
     class ViewHolder extends RecyclerView.ViewHolder {
 
         FirstRecycleViewLayoutBinding binding;

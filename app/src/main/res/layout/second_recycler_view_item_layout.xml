@@ -31,6 +31,7 @@
         <ImageButton
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:id="@+id/love"
             android:layout_alignEnd="@id/item_image"
             android:layout_margin="10dp"
             android:background="@android:color/transparent"
