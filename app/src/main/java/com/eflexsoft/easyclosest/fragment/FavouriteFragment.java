@@ -90,6 +90,13 @@ public class FavouriteFragment extends Fragment {
         viewModel.closetItemLiveData().observe(getActivity(), new Observer<List<ClosetItem>>() {
             @Override
             public void onChanged(List<ClosetItem> closetItems) {
+
+                if (closetItems.isEmpty()) {
+                    binding.sorry.setVisibility(View.VISIBLE);
+                } else {
+                    binding.sorry.setVisibility(View.GONE);
+                }
+
                 adapter.submitList(closetItems);
             }
         });

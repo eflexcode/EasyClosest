@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 
+import com.eflexsoft.easyclosest.AddEventActivity;
 import com.eflexsoft.easyclosest.AddToClosetActivity;
 import com.eflexsoft.easyclosest.AddToDailyOutfitActivity;
 import com.eflexsoft.easyclosest.R;
@@ -47,6 +48,15 @@ public class UploadBottomSheetFragment extends BottomSheetDialogFragment {
             public void onClick(View v) {
                 dismiss();
                 startActivity(new Intent(getContext(), AddToDailyOutfitActivity.class));
+
+            }
+        });
+
+        binding.events.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+                startActivity(new Intent(getContext(), AddEventActivity.class));
 
             }
         });

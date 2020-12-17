@@ -69,7 +69,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="30dp"
                 android:background="?android:selectableItemBackground"
                 android:orientation="horizontal">
 
@@ -92,6 +91,33 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/events"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:background="?android:selectableItemBackground"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/ic_calendar_stroke" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Coming events"
+                    android:textColor="#000"
+                    android:textSize="15sp"
+                    android:textStyle="normal" />
+
+            </LinearLayout>
         </LinearLayout>
 
     </RelativeLayout>
