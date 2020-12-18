@@ -1,5 +1,13 @@
 package com.eflexsoft.easyclosest.model;
 
+import androidx.databinding.BindingAdapter;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
+import com.eflexsoft.easyclosest.R;
+import com.rishabhharit.roundedimageview.RoundedImageView;
+
 public class Event {
 
     private long id;
@@ -11,6 +19,9 @@ public class Event {
     private String imageUrl6;
     private String note;
     private String date;
+
+    public Event() {
+    }
 
     public Event(long id, String imageUrl1, String imageUrl2, String imageUrl3, String imageUrl4, String imageUrl5, String imageUrl6, String note, String date) {
         this.id = id;
@@ -94,5 +105,17 @@ public class Event {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    @BindingAdapter("android:setEventImage")
+    public static void setEventImage(RoundedImageView roundedImageView, String imageUrl) {
+
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.color.brown);
+        requestOptions.error(R.color.brown);
+//        requestOptions.
+
+        Glide.with(roundedImageView).load(imageUrl).apply(requestOptions).transition(DrawableTransitionOptions.withCrossFade()).into(roundedImageView);
+
     }
 }

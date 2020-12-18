@@ -12,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.Manifest;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -38,6 +39,9 @@ public class AddEventActivity extends AppCompatActivity implements DatePickerDia
 
     ActivityAddEventBinding binding;
     List<Uri> uriList = new ArrayList<>();
+
+    Intent intent;
+
     SlideImageAdapter slideImageAdapter;
 
     EventViewModel viewModel;
@@ -52,6 +56,8 @@ public class AddEventActivity extends AppCompatActivity implements DatePickerDia
         viewModel = new ViewModelProvider(this).get(EventViewModel.class);
 
         setSupportActionBar(binding.toolb);
+
+        intent = getIntent();
 
         binding.toolb.setNavigationIcon(R.drawable.ic_left_arrow2);
         binding.toolb.setNavigationOnClickListener(new View.OnClickListener() {
@@ -138,7 +144,7 @@ public class AddEventActivity extends AppCompatActivity implements DatePickerDia
             return;
         }
 
-        viewModel.addToOutfit(uriList, note, date);
+        viewModel.addToEvent(uriList, note, date);
         Toast.makeText(this, "Uploading", Toast.LENGTH_SHORT).show();
         finish();
     }

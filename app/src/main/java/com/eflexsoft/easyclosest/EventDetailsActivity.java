@@ -14,50 +14,39 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.eflexsoft.easyclosest.adapter.ImageItemAdapter;
 import com.eflexsoft.easyclosest.adapter.ImageSlideCardAdapter;
-import com.eflexsoft.easyclosest.databinding.ActivityAddToDailyOutfitBinding;
-import com.eflexsoft.easyclosest.databinding.ActivityOutfitDatiledBinding;
+import com.eflexsoft.easyclosest.databinding.ActivityEventDetailsBinding;
 import com.eflexsoft.easyclosest.fragment.DeleteBottomSheetFragment;
-import com.eflexsoft.easyclosest.fragment.EditBottomSheetFragment;
-import com.eflexsoft.easyclosest.fragment.PickImageBottomSheetFragment;
-import com.eflexsoft.easyclosest.model.ImageItem;
 import com.eflexsoft.easyclosest.model.ImageItem2;
-import com.eflexsoft.easyclosest.model.UpdateImage;
-import com.eflexsoft.easyclosest.viewmodel.AddToDailyOutfitViewModel;
-import com.eflexsoft.easyclosest.viewmodel.ChangeOutfitImageViewModel;
 import com.eflexsoft.easyclosest.viewmodel.ClosetItemViewModel;
+import com.eflexsoft.easyclosest.viewmodel.EventViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OutfitDatiledActivity extends AppCompatActivity {
+public class EventDetailsActivity extends AppCompatActivity {
+
+    ActivityEventDetailsBinding binding;
+    String note;
+    String date;
+    long id;
 
     Intent intent;
     ClosetItemViewModel viewModel;
-    AddToDailyOutfitViewModel outfitViewModel;
-    ChangeOutfitImageViewModel imageViewModel;
-
-    String note;
-    String season;
-    String date;
-    long id;
+    EventViewModel eventViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_outfit_datiled);
+//        setContentView(R.layout.activity_event_details);
 
-        ActivityOutfitDatiledBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_outfit_datiled);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_event_details);
         viewModel = new ViewModelProvider(this).get(ClosetItemViewModel.class);
-        outfitViewModel = new ViewModelProvider(this).get(AddToDailyOutfitViewModel.class);
-        imageViewModel = new ViewModelProvider(this).get(ChangeOutfitImageViewModel.class);
-
+        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
         intent = getIntent();
         setSupportActionBar(binding.toolb);
         id = intent.getLongExtra("id", 0);
         note = intent.getStringExtra("note");
-        season = intent.getStringExtra("season");
         date = intent.getStringExtra("date");
         String imageUrl1 = intent.getStringExtra("imageUrl1");
         String imageUrl2 = intent.getStringExtra("imageUrl2");
@@ -79,7 +68,7 @@ public class OutfitDatiledActivity extends AppCompatActivity {
             imageItems.add(new ImageItem2(imageUrl6, "imageUrl6", id));
         }
 
-        ImageSlideCardAdapter cardAdapter = new ImageSlideCardAdapter(imageItems, this,false);
+        ImageSlideCardAdapter cardAdapter = new ImageSlideCardAdapter(imageItems, this,true);
         binding.viewPager.setAdapter(cardAdapter);
         binding.toolb.setNavigationIcon(R.drawable.ic_left_arrow2);
         binding.toolb.setNavigationOnClickListener(new View.OnClickListener() {
@@ -90,7 +79,6 @@ public class OutfitDatiledActivity extends AppCompatActivity {
         });
 
         binding.date.setText(date);
-        binding.season.setText(season);
 
         if (!note.trim().isEmpty()) {
             binding.note.setText(note);
@@ -104,21 +92,12 @@ public class OutfitDatiledActivity extends AppCompatActivity {
 
                 if (aBoolean) {
 
-                    outfitViewModel.delete(String.valueOf(id));
-                    Toast.makeText(OutfitDatiledActivity.this, "Deleting", Toast.LENGTH_SHORT).show();
+                    eventViewModel.delete(String.valueOf(id));
+                    Toast.makeText(EventDetailsActivity.this, "Deleting", Toast.LENGTH_SHORT).show();
                     finish();
 
                 } else {
                 }
-
-            }
-        });
-        imageViewModel.updateImageLiveData().observe(this, new Observer<UpdateImage>() {
-            @Override
-            public void onChanged(UpdateImage updateImage) {
-                imageItems.add(updateImage.getPosition(), new ImageItem2(updateImage.getUrl(), updateImage.getName(), updateImage.getId()));
-                cardAdapter.setImageItem2s(imageItems, updateImage.getPosition());
-//                Toast.makeText(OutfitDatiledActivity.this, "svvvvvvvvvvvvvvvvv", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -135,7 +114,7 @@ public class OutfitDatiledActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         switch (item.getItemId()) {
-//
+
             case R.id.delete:
 
                 DeleteBottomSheetFragment fragment = new DeleteBottomSheetFragment();
@@ -144,21 +123,7 @@ public class OutfitDatiledActivity extends AppCompatActivity {
                 break;
             case R.id.edit:
 
-//                Intent intent = new Intent(this, UpdateClosetItemActivity.class);
-//                intent.putExtra("itemImageUrl", itemImageUrl);
-//                intent.putExtra("category", category);
-//                intent.putExtra("season", season);
-//                intent.putExtra("note", note);
-//                intent.putExtra("id", id);
-//                intent.putExtra("isFavorite", isFavorite);
-//
-//                startActivity(intent);
-
-//                EditBottomSheetFragment fragment2 = new EditBottomSheetFragment();
-//                fragment2.show(getSupportFragmentManager(), "edit");
-
-                Intent intent = new Intent(this, ChangeOutfitTextActivity.class);
-                intent.putExtra("season", season);
+                Intent intent = new Intent(this, EditEventActivity.class);
                 intent.putExtra("note", note);
                 intent.putExtra("id", id);
                 intent.putExtra("date",date);
@@ -168,7 +133,6 @@ public class OutfitDatiledActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-
 
     }
 

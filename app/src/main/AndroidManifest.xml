@@ -21,7 +21,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddEventActivity"></activity>
+        <activity android:name=".EditEventActivity"></activity>
+        <activity android:name=".EventDetailsActivity" />
+        <activity android:name=".AddEventActivity" />
         <activity android:name=".FullClosetItemListActivity" />
         <activity android:name=".ChangeOutfitTextActivity" />
         <activity

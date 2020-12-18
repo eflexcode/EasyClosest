@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.eflexsoft.easyclosest.databinding.ActivityChangeOutfitImageBinding;
 import com.eflexsoft.easyclosest.model.UpdateImage;
 import com.eflexsoft.easyclosest.viewmodel.ChangeOutfitImageViewModel;
+import com.eflexsoft.easyclosest.viewmodel.EventViewModel;
 import com.kroegerama.imgpicker.BottomSheetImagePicker;
 import com.kroegerama.imgpicker.ButtonType;
 
@@ -27,12 +28,14 @@ public class ChangeOutfitImageActivity extends AppCompatActivity implements Bott
 
     ActivityChangeOutfitImageBinding binding;
     ChangeOutfitImageViewModel viewModel;
+    EventViewModel eventViewModel;
     Uri uri;
 
     Intent intent;
 
     String name;
     String imageUrl;
+    boolean isEvent;
     long id;
     int position;
 
@@ -46,6 +49,7 @@ public class ChangeOutfitImageActivity extends AppCompatActivity implements Bott
         intent = getIntent();
         name = intent.getStringExtra("name");
         imageUrl = intent.getStringExtra("url");
+        isEvent = intent.getBooleanExtra("isEvent", false);
         id = intent.getLongExtra("id", 0);
         position = intent.getIntExtra("position", -1);
 
@@ -78,12 +82,19 @@ public class ChangeOutfitImageActivity extends AppCompatActivity implements Bott
         });
 
         viewModel = new ViewModelProvider(this).get(ChangeOutfitImageViewModel.class);
+        eventViewModel = new ViewModelProvider(this).get(EventViewModel.class);
 
         binding.uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (uri != null){
-                    viewModel.changeImage(imageUrl,name,id,position,uri);
+                if (uri != null) {
+
+                    if (isEvent) {
+                        eventViewModel.changeImage(imageUrl, name, id, position, uri);
+                    } else {
+                        viewModel.changeImage(imageUrl, name, id, position, uri);
+                    }
+
                     Toast.makeText(ChangeOutfitImageActivity.this, "Uploading", Toast.LENGTH_SHORT).show();
                     finish();
                 }

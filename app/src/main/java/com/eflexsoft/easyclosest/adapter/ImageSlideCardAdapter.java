@@ -24,10 +24,12 @@ public class ImageSlideCardAdapter extends CardSliderAdapter<ImageSlideCardAdapt
 
     List<ImageItem2> imageItem2s;
     Context context;
+    boolean isEvent;
 
-    public ImageSlideCardAdapter(List<ImageItem2> imageItem2s,Context context) {
+    public ImageSlideCardAdapter(List<ImageItem2> imageItem2s,Context context,boolean isEvent) {
         this.imageItem2s = imageItem2s;
         this.context = context;
+        this.isEvent = isEvent;
     }
 
     @Override
@@ -42,6 +44,7 @@ public class ImageSlideCardAdapter extends CardSliderAdapter<ImageSlideCardAdapt
                 Intent intent = new Intent(context, ChangeOutfitImageActivity.class);
                 intent.putExtra("url", imageItem2.getUrl());
                 intent.putExtra("name", imageItem2.getName());
+                intent.putExtra("isEvent",isEvent);
                 intent.putExtra("id", imageItem2.getId());
                 intent.putExtra("position",i);
 

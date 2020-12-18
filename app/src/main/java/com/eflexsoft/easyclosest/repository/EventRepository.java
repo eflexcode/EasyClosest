@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
+import com.eflexsoft.easyclosest.model.UpdateImage;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -43,6 +44,66 @@ public class EventRepository {
 
     }
 
+    public void changeImage(String oldUrl, String name, long id, int position, Uri uri) {
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
+        StorageReference storageReference = firebaseStorage.getReference("closetImages");
+
+        StorageReference gallery = storageReference.child("imageFileUpload" + System.currentTimeMillis() + getMimeTyp(uri));
+        UploadTask uploadTask = gallery.putFile(uri);
+        uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+            @Override
+            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                if (!task.isSuccessful()) {
+                    throw task.getException();
+                }
+
+                return gallery.getDownloadUrl();
+            }
+        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+            @Override
+            public void onComplete(@NonNull Task<Uri> task) {
+                if (task.isSuccessful()) {
+
+                    String downloadUri = task.getResult().toString();
+
+                    FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+
+                    DocumentReference reference = firestore.collection("Events").document(FirebaseAuth.getInstance().getUid())
+                            .collection("items").document(String.valueOf(id));
+
+                    Map<String, Object> map = new HashMap<>();
+                    map.put(name, downloadUri);
+
+                    reference.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(context, "Upload successful", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Go back and refresh layout", Toast.LENGTH_SHORT).show();
+
+                            StorageReference deleteReference = firebaseStorage.getReferenceFromUrl(oldUrl);
+                            deleteReference.delete();
+//                            Toast.makeText(context, "fsdv  ssssssssssssssssssssssssssssss", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                }
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+//                isUploadInSuccessful.setValue(false);
+            }
+
+        });
+    }
+
     public void delete(String id) {
 
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
@@ -58,7 +119,7 @@ public class EventRepository {
 
     }
 
-    public void addToOutfit(List<Uri> uriList, String note, String date) {
+    public void addToEvent(List<Uri> uriList, String note, String date) {
 
         long timeMillis = System.currentTimeMillis();
 
@@ -129,5 +190,31 @@ public class EventRepository {
         });
 
     }
+    public void UpdateTet(String id, String note, String date) {
 
+        FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+
+        DocumentReference reference = firestore.collection("Events").document(FirebaseAuth.getInstance().getUid())
+                .collection("items").document(id);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("note", note);
+        map.put("date", date);
+
+        reference.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(context, "Update successful", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Go back and refresh layout", Toast.LENGTH_SHORT).show();
+                isUploadInSuccessful.setValue(true);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                isUploadInSuccessful.setValue(false);
+            }
+        });
+
+    }
 }

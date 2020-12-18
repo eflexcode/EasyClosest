@@ -32,10 +32,10 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/favourite_recycler_view"
+                android:id="@+id/event_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingBottom="75dp" />
+                android:paddingBottom="70dp" />
 
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
         <LinearLayout
