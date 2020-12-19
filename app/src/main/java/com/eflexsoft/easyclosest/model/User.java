@@ -19,7 +19,7 @@ public class User {
     public User() {
     }
 
-    public User(String username, String profilePictureUlr, String age, String id,String email) {
+    public User(String username, String profilePictureUlr, String age, String id, String email) {
         this.username = username;
         this.profilePictureUlr = profilePictureUlr;
         this.age = age;
@@ -69,7 +69,7 @@ public class User {
 
 
     @BindingAdapter("android:setProPic")
-    public static void setProPic(CircleImageView circleImageView,String url){
+    public static void setProPic(CircleImageView circleImageView, String url) {
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(R.color.brown);
         requestOptions.error(R.drawable.no_p);

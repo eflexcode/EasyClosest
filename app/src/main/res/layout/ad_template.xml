@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <com.eflexsoft.nativeads.TemplateView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/unifield_ad"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        app:gnt_template_type="@layout/gnt_medium_template_view"/>
+
+</layout>

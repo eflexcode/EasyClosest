@@ -131,4 +131,8 @@ dependencies {
     implementation 'com.kroegerama:bottomsheet-imagepicker:1.1.2'
 
     implementation 'com.github.IslamKhSh:CardSlider:1.0.1'
+
+    implementation 'com.google.android.gms:play-services-ads:19.6.0'
+
+    implementation project(':nativeads')
 }

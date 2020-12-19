@@ -46,6 +46,7 @@
                         android:textStyle="bold" />
 
                     <ImageView
+                        android:id="@+id/camera"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"
@@ -63,6 +64,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:layout_marginBottom="100dp"
                 android:layout_height="match_parent">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -105,9 +107,11 @@
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/n"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:background="?android:selectableItemBackground"
                         android:elevation="8dp">
 
                         <View
@@ -147,9 +151,34 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/ads"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:background="?android:selectableItemBackground"
+                        android:elevation="8dp">
+
+                        <View
+                            android:layout_width="5dp"
+                            android:layout_height="match_parent"
+                            android:background="#FF6D00" />
+
+                        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/adView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            ads:adSize="SMART_BANNER"
+                            ads:adUnitId="ca-app-pub-9552597639357298/3783588338" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/e"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="?android:selectableItemBackground"
                         android:elevation="8dp"
                         app:cardCornerRadius="0dp">
 
@@ -190,9 +219,11 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
+                        android:id="@+id/a"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="10dp"
+                        android:background="?android:selectableItemBackground"
                         android:elevation="8dp"
                         app:cardCornerRadius="0dp">
 

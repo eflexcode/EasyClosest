@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/t"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:text="Update profile"
+        android:textColor="#000"
+        android:textSize="19sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/text_t"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/t"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:backgroundTint="#8E8B8B"
+        android:textSize="18sp"
+        android:textStyle="normal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_t"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/cancel_btn_background"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/update"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/login_btn_background2"
+            android:text="Update"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</RelativeLayout>

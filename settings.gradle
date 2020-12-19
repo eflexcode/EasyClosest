@@ -1,3 +1,4 @@
+include ':nativeads'
 include ':mylibrary'
 include ':app'
 rootProject.name = "Easy closest"

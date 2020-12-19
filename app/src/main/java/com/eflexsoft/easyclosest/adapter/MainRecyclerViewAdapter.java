@@ -28,12 +28,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.eflexsoft.easyclosest.ClosetItemDetailsActivity;
 import com.eflexsoft.easyclosest.FullClosetItemListActivity;
 import com.eflexsoft.easyclosest.R;
+import com.eflexsoft.easyclosest.databinding.AdTemplateBinding;
 import com.eflexsoft.easyclosest.databinding.FirstRecycleViewLayoutBinding;
 import com.eflexsoft.easyclosest.databinding.SecondRecyclerViewItemLayoutBinding;
 import com.eflexsoft.easyclosest.model.ClosetCategoryItem;
 import com.eflexsoft.easyclosest.model.ClosetItem;
 import com.eflexsoft.easyclosest.viewholder.ClosetItemViewHolder;
 import com.eflexsoft.easyclosest.viewmodel.AddToClosetViewModel;
+import com.eflexsoft.easyclosest.viewmodel.AdsViewModel;
 import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.firebase.ui.firestore.paging.FirestorePagingOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,6 +49,7 @@ import java.util.Map;
 public class MainRecyclerViewAdapter extends ListAdapter<ClosetCategoryItem, MainRecyclerViewAdapter.ViewHolder> {
 
     Context context;
+    int count = 0;
 
     public MainRecyclerViewAdapter(Context context) {
         super(callback);
@@ -133,6 +136,7 @@ public class MainRecyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Mai
 
                 holder.binding.setItemData(model);
                 AddToClosetViewModel viewModel = new ViewModelProvider((ViewModelStoreOwner) context).get(AddToClosetViewModel.class);
+                AdsViewModel ads = new ViewModelProvider((ViewModelStoreOwner) context).get(AdsViewModel.class);
 
                 if (position == getCurrentList().size() - 1) {
                     holder.binding.fab.setVisibility(View.VISIBLE);
@@ -146,8 +150,6 @@ public class MainRecyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Mai
                         Intent intent = new Intent(context, FullClosetItemListActivity.class);
                         intent.putExtra("category", model.getCategory());
                         context.startActivity(intent);
-
-
                     }
                 });
 
@@ -155,26 +157,34 @@ public class MainRecyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Mai
                     @Override
                     public void onClick(View v) {
 
-                        Intent intent = new Intent(context, ClosetItemDetailsActivity.class);
-                        intent.putExtra("itemImageUrl", model.getImageUrl());
-                        intent.putExtra("category", model.getCategory());
-                        intent.putExtra("season", model.getSeason());
-                        intent.putExtra("note", model.getNote());
-                        intent.putExtra("id", model.getId());
-                        intent.putExtra("isFavorite", model.isFavourite());
-
-                        Pair<View, String> viewStringPair = Pair.create(holder.binding.itemImage, ViewCompat.getTransitionName(holder.binding.itemImage));
-
-                        ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                                (Activity) context, viewStringPair
-                        );
-
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                            context.startActivity(intent, activityOptionsCompat.toBundle());
+                        if (count == 4) {
+                            //do ads
+                            ads.showAds.setValue(true);
+                            count = 0;
                         } else {
-                            context.startActivity(intent);
-                        }
+                            count += 1;
 
+
+                            Intent intent = new Intent(context, ClosetItemDetailsActivity.class);
+                            intent.putExtra("itemImageUrl", model.getImageUrl());
+                            intent.putExtra("category", model.getCategory());
+                            intent.putExtra("season", model.getSeason());
+                            intent.putExtra("note", model.getNote());
+                            intent.putExtra("id", model.getId());
+                            intent.putExtra("isFavorite", model.isFavourite());
+
+                            Pair<View, String> viewStringPair = Pair.create(holder.binding.itemImage, ViewCompat.getTransitionName(holder.binding.itemImage));
+
+                            ActivityOptionsCompat activityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                                    (Activity) context, viewStringPair
+                            );
+
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                context.startActivity(intent, activityOptionsCompat.toBundle());
+                            } else {
+                                context.startActivity(intent);
+                            }
+                        }
                     }
                 });
                 holder.binding.love.setOnClickListener(new View.OnClickListener() {
@@ -210,7 +220,8 @@ public class MainRecyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Mai
         holder.binding.secondRecycler.setAdapter(holderFirestorePagingAdapter);
 
     }
-    public void doAddToFavorite(String id, String category,boolean isFavourite) {
+
+    public void doAddToFavorite(String id, String category, boolean isFavourite) {
 
         FirebaseFirestore firestore = FirebaseFirestore.getInstance();
         DocumentReference reference = firestore.collection("Closets").document(FirebaseAuth.getInstance().getUid())
@@ -222,11 +233,24 @@ public class MainRecyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Mai
         reference.update(map);
 
     }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         FirstRecycleViewLayoutBinding binding;
 
         public ViewHolder(FirstRecycleViewLayoutBinding binding) {
+            super(binding.getRoot());
+
+            this.binding = binding;
+
+        }
+    }
+
+    class ViewHolder2 extends RecyclerView.ViewHolder {
+
+        AdTemplateBinding binding;
+
+        public ViewHolder2(AdTemplateBinding binding) {
             super(binding.getRoot());
 
             this.binding = binding;
