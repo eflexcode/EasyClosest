@@ -16,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 public class AllClothsRepository {
 
     Context context;
-   public MutableLiveData<CategoryCount> categoryCountMutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<CategoryCount> categoryCountMutableLiveData = new MutableLiveData<>();
 
     public AllClothsRepository(Context context) {
         this.context = context;
@@ -32,9 +32,11 @@ public class AllClothsRepository {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                CategoryCount categoryCount = value.toObject(CategoryCount.class);
-                categoryCountMutableLiveData.setValue(categoryCount);
+                if (value != null) {
 
+                    CategoryCount categoryCount = value.toObject(CategoryCount.class);
+                    categoryCountMutableLiveData.setValue(categoryCount);
+                }
             }
         });
 

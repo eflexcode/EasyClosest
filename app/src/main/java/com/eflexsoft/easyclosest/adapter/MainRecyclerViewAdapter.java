@@ -101,8 +101,8 @@ public class MainRecyclerViewAdapter extends ListAdapter<ClosetCategoryItem, Mai
 
         if (getCurrentList().size() - 1 == position) {
 
-            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 850);
-            layoutParams.setMargins(0, 0, 0, 10);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, 900);
+            layoutParams.setMargins(0, 0, 0, 80);
 
             holder.binding.m.setLayoutParams(layoutParams);
         }

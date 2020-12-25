@@ -30,10 +30,12 @@ public class HomeFragmentRepository {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                User user = value.toObject(User.class);
+                if (value != null) {
 
-                userMutableLiveData.setValue(user);
+                    User user = value.toObject(User.class);
 
+                    userMutableLiveData.setValue(user);
+                }
 
             }
         });

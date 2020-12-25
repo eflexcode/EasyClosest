@@ -2,6 +2,7 @@ package com.eflexsoft.easyclosest.fragment;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -17,7 +18,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.eflexsoft.easyclosest.LoginActivity;
 import com.eflexsoft.easyclosest.R;
+import com.eflexsoft.easyclosest.SplashActivity;
 import com.eflexsoft.easyclosest.databinding.FragmentProfileBinding;
 import com.eflexsoft.easyclosest.model.User;
 import com.eflexsoft.easyclosest.viewmodel.HomeFragmentViewModel;
@@ -26,6 +29,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.kroegerama.imgpicker.BottomSheetImagePicker;
 import com.kroegerama.imgpicker.ButtonType;
 
@@ -142,6 +146,16 @@ public class ProfileFragment extends Fragment implements BottomSheetImagePicker.
                 .build();
 
         binding.adView.loadAd(adRequest);
+
+        binding.logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getContext(), LoginActivity.class));
+                getActivity().finish();
+
+            }
+        });
 
         return view;
 

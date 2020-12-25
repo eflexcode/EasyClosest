@@ -2,6 +2,7 @@ package com.eflexsoft.easyclosest;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -64,12 +65,19 @@ public class CreateAccountActivity extends AppCompatActivity {
                 }
             }
         });
+
         viewModel.isSuccess().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
-                    startActivity(new Intent(CreateAccountActivity.this, MainActivity.class));
-                    finish();
+//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                    startActivity(intent);
+
+                    ActivityCompat.finishAffinity(CreateAccountActivity.this);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
                 } else {
 
                 }
@@ -100,7 +108,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                     activityCreateAccountBinding.password.setError("mismatched");
                     activityCreateAccountBinding.passwordConfirm.setError("mismatched");
                 } else {
-                    viewModel.createAccount(email,name,password);
+                    viewModel.createAccount(email, name, password);
                     activityCreateAccountBinding.loginContinue.startAnimation();
                 }
 
@@ -124,6 +132,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         });
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -131,7 +140,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         if (requestCode == RequestCode) {
 
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            GoogleSignInAccount googleSignInAccount;
+            GoogleSignInAccount googleSignInAccount = null;
 
             try {
                 googleSignInAccount = task.getResult(ApiException.class);

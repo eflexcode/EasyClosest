@@ -16,10 +16,10 @@
 
     <EditText
         android:id="@+id/text_t"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/t"
-        android:layout_centerHorizontal="true"
+        android:layout_centerHorizontal="false"
         android:layout_margin="10dp"
         android:padding="5dp"
         android:backgroundTint="#8E8B8B"
